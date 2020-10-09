@@ -50,8 +50,6 @@ public class ShootFromPoint : MonoBehaviour
 
         //TurnCorrection(mousePos);
 
-
-
         //Click
         if (Input.GetMouseButton(0) && currentCooldown > gunCooldown)
         {
