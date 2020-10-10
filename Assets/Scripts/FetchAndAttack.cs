@@ -24,6 +24,7 @@ public class FetchAndAttack : MonoBehaviour
         if (collision.gameObject.layer == GameInfo.PLAYER_LAYER)
         {
             this.currentTarget = collision.transform;
+            isChasing = true;
             //StartCoroutine(DelayChase());
         }
     }
@@ -41,7 +42,7 @@ public class FetchAndAttack : MonoBehaviour
             return;
         // si hay algo en el medio tampoco se mueve
 
-        if (isChasing)
+        if (isChasing && Vector2.Distance(transform.position, currentTarget.position) >= 0.5f)
         {
             // moverse hacia el objetivo
             var movVector = Vector2.MoveTowards(transform.position, currentTarget.position, speedMov * Time.deltaTime);

@@ -113,7 +113,7 @@ public class ShootFromPoint : MonoBehaviour
 
         if (gunThrown)
         {
-            var bullet = Instantiate(bulletPrefab, gunpoint.transform.position, Quaternion.identity);
+            var bullet = Instantiate(gunScript.gunPrefab, gunpoint.transform.position, Quaternion.identity);
             var directionVector = (mousePos - gunpoint.transform.position).normalized;
 
             var throwLikeABullet = gunThrown.AddComponent<Bullet>();
