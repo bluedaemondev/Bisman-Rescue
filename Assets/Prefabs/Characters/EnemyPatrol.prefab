@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3097575430329612839}
   - component: {fileID: 3097575430329612859}
   - component: {fileID: 3097575430329612838}
+  - component: {fileID: 1803798852194442965}
   - component: {fileID: 3097575430329612858}
   - component: {fileID: 3097575430329612832}
   - component: {fileID: 7753990251536080758}
@@ -92,6 +93,22 @@ MonoBehaviour:
   speedMov: 2.56
   currentWaypoint: {fileID: 0}
   currentWaypointIndex: 0
+--- !u!114 &1803798852194442965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3097575430329612857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cec92c8f7efe4724a9309b2ae22f6785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chanceVal: 10
+  timeStayInPlace: 5
+  anim: {fileID: 0}
+  stayInPlaceAnimatorParam: staysStill
 --- !u!61 &3097575430329612858
 BoxCollider2D:
   m_ObjectHideFlags: 0

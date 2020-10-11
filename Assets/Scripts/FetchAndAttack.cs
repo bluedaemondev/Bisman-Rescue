@@ -42,12 +42,13 @@ public class FetchAndAttack : MonoBehaviour
             return;
         // si hay algo en el medio tampoco se mueve
 
-        if (isChasing && Vector2.Distance(transform.position, currentTarget.position) >= 0.5f)
+        if (isChasing && Vector2.Distance(transform.position, currentTarget.position) <= 5f)
         {
             // moverse hacia el objetivo
             var movVector = Vector2.MoveTowards(transform.position, currentTarget.position, speedMov * Time.deltaTime);
             transform.position = movVector;
         }
+        
     }
 
     // tbd
@@ -57,12 +58,11 @@ public class FetchAndAttack : MonoBehaviour
     //    StartCoroutine(DelayChase());
     //}
 
-    //private IEnumerator DelayChase()
+    //private void ResetChase()
     //{
-    //    yield return new WaitForSeconds(this.delayToChase);
     //    this.isChasing = !isChasing;
+    //    currentTarget = null;
     //    // invierto para reutilizar tambien en el delay de salida del agro
-
     //}
 
 }

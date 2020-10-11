@@ -18,7 +18,10 @@ public class AlteredState : MonoBehaviour
     private void OnEnable()
     {
         this.GetComponent<WaypointPatrol>().enabled = false;
+
         this.GetComponent<FetchAndAttack>().enabled = false;
+        this.GetComponent<FetchAndAttack>().isChasing = false;
+        this.GetComponent<FetchAndAttack>().colTrigger.enabled = false;
     }
     private void Start()
     {
@@ -47,6 +50,8 @@ public class AlteredState : MonoBehaviour
     private void GetUp()
     {
         this.GetComponent<FetchAndAttack>().enabled = true;
+        this.GetComponent<FetchAndAttack>().colTrigger.enabled = true;
+
         this.GetComponent<WaypointPatrol>().enabled = true;
         this.currentTimer = TIME_GET_UP;
         this.sprRend.sprite = startSprite;

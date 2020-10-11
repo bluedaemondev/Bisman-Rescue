@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -48,7 +49,7 @@ public class ShootFromPoint : MonoBehaviour
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         mousePos.z = 0;
 
-        //TurnCorrection(mousePos);
+        TurnGunpoint(mousePos);
 
         //Click
         if (Input.GetMouseButton(0) && currentCooldown > gunCooldown)
@@ -71,6 +72,17 @@ public class ShootFromPoint : MonoBehaviour
 
 
 
+    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.layer == bulletPrefab.layer)
+    //}
+    private void TurnGunpoint(Vector3 mousePos)
+    {
+        Vector3 aimDirection = (mousePos - transform.position).normalized;
+        float angleRot = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        gunpoint.transform.eulerAngles = new Vector3(0, 0, angleRot);
+        //Debug.Log("Gunpoimt angle = " + angleRot);
     }
 
     //void TurnCorrection(Vector3 mousePos)

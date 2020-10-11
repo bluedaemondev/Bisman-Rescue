@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeedMultip = 6.5f;
     public bool activeMovement = true;
-    
+
     [Header("Componentes de objeto")]
     public Rigidbody2D rbPlayer;
     public SpriteRenderer sprRend;
@@ -26,11 +26,11 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        if(this.deadEvent == null)
+        if (this.deadEvent == null)
         {
             this.deadEvent = new UnityEvent();
         }
-        if(this.animator == null)
+        if (this.animator == null)
         {
             this.animator = GetComponent<Animator>();
         }
@@ -68,7 +68,10 @@ public class PlayerController : MonoBehaviour
             //transform.position += new Vector3(inputVals.x * Time.deltaTime * moveSpeedMultip, inputVals.y * Time.deltaTime * moveSpeedMultip);
             var newPos = new Vector2(transform.position.x + inputVals.x * Time.deltaTime * moveSpeedMultip, transform.position.y + inputVals.y * Time.deltaTime * moveSpeedMultip);
             rbPlayer.MovePosition(newPos);
-            
+
+            //var localScale = this.transform.localScale; // flip
+            //localScale.x = Mathf.Abs(localScale.x) * Mathf.Sign(inputVals.x);
+            //this.transform.localScale = localScale;
         }
 
     }

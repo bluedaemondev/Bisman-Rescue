@@ -58,6 +58,12 @@ public class WaypointPatrol : MonoBehaviour
             var next = ++currentWaypointIndex;
             if (next != waypoints.Count)
                 currentWaypoint = waypoints[next];
+
+            // dejo que calcule su proximo punto pero me fijo si se queda un toque en el lugar
+            var r_stay = this.GetComponent<RandomStayInPlace>();
+            var r_result = r_stay.StaysInPlace();
+
+            print("stay? " + r_result);
         }
     }
 }

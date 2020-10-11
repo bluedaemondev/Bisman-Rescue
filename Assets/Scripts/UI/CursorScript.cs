@@ -42,7 +42,7 @@ public class CursorScript : MonoBehaviour
         if (playerCoords == null)
         {
             playerCoords = GameObject.FindGameObjectWithTag("Player").transform;
-            //cameraBounds = playerCoords.GetComponentInChildren<CameraBounds>().bounds;
+            CameraFollow(playerCoords.transform);
         }
     }
 
@@ -73,19 +73,23 @@ public class CursorScript : MonoBehaviour
 
     void LateUpdate()
     {
+        //
         Debug.DrawRay(playerCoords.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), Color.red);
 
-
-        //if ()
         MoveCursor();
-        
+
         if (Input.GetButton("Fire3"))
-            CameraFollowCursor();
+            CameraFollow(this.transform); // camara sigue el mouse
+
+        if (Input.GetButtonUp("Fire3")) // reseteo la camara para seguir al jugador
+            CameraFollow(playerCoords.transform);
+
     }
 
-    void CameraFollowCursor()
+    void CameraFollow(Transform target)
     {
-        cameraBrain.Follow = this.transform;
+        cameraBrain.Follow = target;
+        cameraBrain.transform.position = target.position - new Vector3(0,0,10);
     }
 
     void MoveCursor()

@@ -7,10 +7,10 @@ public class Bullet : MonoBehaviour
     Rigidbody2D rbSelf;
     public float speedShot;
     public bool diesInCollision;
-    
+
     [Header("Vector direccion")]
     public Vector2 forceToAppend;
-    
+
     [Header("Prefabs usados")]
     public GameObject particlesOnCrash;
 
@@ -20,6 +20,9 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Physics2D.IgnoreCollision(GameObject.FindObjectOfType<PlayerController>().GetComponent<Collider2D>(),
+            this.GetComponent<Collider2D>());
+
         this.rbSelf = GetComponent<Rigidbody2D>();
         // fuerza normalizada * velocidad
         this.rbSelf.AddForce(forceToAppend * speedShot, ForceMode2D.Impulse);
@@ -28,7 +31,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //print("hola");
-        
+
         if (collision.gameObject.layer == GameInfo.ENEMY_LAYER) //ENEMY
         {
             collision.gameObject.GetComponent<EnemyController>().Damage(this.damageType);
