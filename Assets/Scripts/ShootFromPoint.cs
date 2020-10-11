@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ShootFromPoint : MonoBehaviour
@@ -17,29 +18,54 @@ public class ShootFromPoint : MonoBehaviour
 
     public float currentCooldown;
 
-    private float f, d, x, y, h, b, a, weaponAngle, turnAngle;
-
     public GameObject bulletPrefab;
     [Header("TBD")]
     public Animator gunAnimator;
 
     public GunScript equipedGun;
+    SpriteRenderer gunHolder;
+
+    AudioSource sfxPlayer;
+    public AudioClip clipMelee;
 
 
     private void Start()
     {
-        this.TryGetComponent<GunScript>(out equipedGun);
+        //this.TryGetComponent<GunScript>(out equipedGun);
+
+        this.sfxPlayer = GetComponentInChildren<AudioSource>();
+
         if (equipedGun != null)
             this.currentCooldown = this.gunCooldown = this.equipedGun.gunCooldown; // si tiene un arma equipada, activo el cd de ese ataque
         else
-            this.currentCooldown = this.gunCooldown = 0f; // no tiene arma, golpea melee sin cd
+            this.currentCooldown = this.gunCooldown = 0.25f; // no tiene arma, golpea melee sin cd
 
+        GameManagerActions.current.defeatEvent.AddListener(DisableComponent);
+    }
+    public void DisableComponent()
+    {
+        this.enabled = false;
     }
 
     public void SetGun(GunScript newGun)
     {
-        this.gunScript = newGun;
+        if (gunScript)
+            ThrowWeapon(transform.position, Vector2.one * 3f);
+        // instancia el ultimo arma y la deja en el piso
 
+        this.gunScript = newGun;
+        SetCooldowns(newGun);
+
+        HudController.current.UpdateRoundsUI(newGun.currAmmo, newGun.maxAmmo);
+
+        gunHolder = gunpoint.GetComponentsInChildren<SpriteRenderer>().Single(gp => gp.CompareTag("gun"));
+        gunHolder.sprite = newGun.spr;
+
+    }
+
+    void SetCooldowns(GunScript newGun)
+    {
+        this.currentCooldown = this.gunCooldown = newGun.gunCooldown;
     }
 
     // Update is called once per frame
@@ -56,20 +82,26 @@ public class ShootFromPoint : MonoBehaviour
         {
             MeleeAttack(mousePos);
         }
+
         // shoot
-        else if (Input.GetMouseButton(0) && gunScript && currentCooldown > gunCooldown)
+        //print(currentCooldown >= gunCooldown && gunScript != null);
+
+        if (Input.GetMouseButton(0) && gunScript != null && currentCooldown >= gunCooldown)
         {
             ShootBullet(mousePos);
+            //print("shot");
 
             //this.gunAnimator.SetBool(clickAnimParam, true);
         }
+
         // throw gun
-        else if (Input.GetMouseButton(1) && gunScript)
+        if (Input.GetMouseButton(1) && gunScript)
         {
-            ThrowWeapon(mousePos);
+            print("thrown weapon");
+            ThrowWeapon(mousePos, Vector2.one);
             //this.gunAnimator.SetBool(throwAnimParam, true);
         }
-        
+
         this.currentCooldown += Time.deltaTime;
 
 
@@ -114,6 +146,18 @@ public class ShootFromPoint : MonoBehaviour
 
     void ShootBullet(Vector3 mousePos)
     {
+        if (gunScript && gunScript.currAmmo - 1 >= 0) // no dispara si no tiene balas
+        {
+            this.sfxPlayer.PlayOneShot(gunScript.sfxGun);
+            HudController.current.UpdateRoundsUI(--gunScript.currAmmo, gunScript.maxAmmo);
+        }
+        else
+        {
+            this.sfxPlayer.PlayOneShot(gunScript.sfxNoClip);
+            HudController.current.UpdateRoundsUI(0, 0); // no bullet
+            return;
+        }
+
         var bullet = Instantiate(bulletPrefab, gunpoint.transform.position, Quaternion.identity);
         var directionVector = (mousePos - gunpoint.transform.position).normalized;
 
@@ -121,12 +165,11 @@ public class ShootFromPoint : MonoBehaviour
 
         this.currentCooldown = 0; // Reseteo el cd
 
-        HudController.current.UpdateRoundsUI(--gunScript.currAmmo);
     }
 
-    void ThrowWeapon(Vector3 mousePos)
+    void ThrowWeapon(Vector3 mousePos, Vector2 forceThrow)
     {
-        GameObject gunThrown = this.gunScript.gameObject;
+        GameObject gunThrown = gunScript.gameObject;
 
         if (gunThrown)
         {
@@ -134,15 +177,19 @@ public class ShootFromPoint : MonoBehaviour
             var directionVector = (mousePos - gunpoint.transform.position).normalized;
 
             var throwLikeABullet = gunThrown.AddComponent<Bullet>();
-            throwLikeABullet.forceToAppend = directionVector;
 
-            Destroy(this.GetComponent<GunScript>()); // le rompo el arma, ya que la tiro
+            throwLikeABullet.forceToAppend = directionVector * forceThrow * 4; //test
+            print(throwLikeABullet.forceToAppend);
 
+            Destroy(this.gunScript.gameObject); // le rompo el arma, ya que la tiro
+            gunHolder.sprite = null;
+            HudController.current.UpdateRoundsUI(0, 0);
         }
     }
 
     void MeleeAttack(Vector3 mousePos)
     {
+
         float angleAttack = TurnGunpoint(mousePos).z;
         Vector2 directionVector = transform.position - mousePos;
 
@@ -152,7 +199,7 @@ public class ShootFromPoint : MonoBehaviour
 
         if (attackTarget.collider) // si tengo alguna colision me fijo si es un enemigo y le mando el mensaje de nokeado
         {
-            Debug.Log(attackTarget.collider);
+            //Debug.Log(attackTarget.collider);
             EnemyController compTarget;
 
             attackTarget.collider.TryGetComponent<EnemyController>(out compTarget);
@@ -161,5 +208,8 @@ public class ShootFromPoint : MonoBehaviour
                 compTarget.Damage(DamageType.Knock);
             }
         }
+        
+        this.sfxPlayer.PlayOneShot(this.clipMelee);
+
     }
 }

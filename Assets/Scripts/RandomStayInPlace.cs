@@ -31,7 +31,7 @@ public class RandomStayInPlace : MonoBehaviour
         if (res)
         {
             // quiero que deje de atacar si esta distraido?
-            this.GetComponent<FetchAndAttack>().enabled = false;
+            //this.GetComponent<FetchAndAttack>().enabled = false;
             this.GetComponent<WaypointPatrol>().enabled = false;
             StartCoroutine(RestartBehaviours());
         }
@@ -43,7 +43,7 @@ public class RandomStayInPlace : MonoBehaviour
 
     IEnumerator RestartBehaviours() // devolver patrullaje
     {
-        Debug.Log("restarting " + this.name + " in t=" + this.timeStayInPlace);
+        //Debug.Log("restarting " + this.name + " in t=" + this.timeStayInPlace);
 
         yield return new WaitForSeconds(timeStayInPlace);
         this.GetComponent<WaypointPatrol>().enabled = true;

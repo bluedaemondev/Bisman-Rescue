@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +16,19 @@ public class EnemyController : MonoBehaviour
     [Header("Previsional para mostrar estados")]
     public List<Sprite> sprites; // 0 normal , 1 en el piso
     public GameObject bloodCorpsePrefab;
-    
+
+    AudioSource sfxEnemy;
+    [Header("Audio clips generales")]
+    public AudioClip sfxDeath;
+    public AudioClip sfxAttack;
+    public AudioClip sfxIdle;
+
+
+    private void Start()
+    {
+        this.sfxEnemy = GetComponentInChildren<AudioSource>();
+        ExitStairs.enemiesOnFloor.Add(this);
+    }
 
     public void Damage(DamageType type)
     {
@@ -27,7 +40,9 @@ public class EnemyController : MonoBehaviour
                 break;
 
             case DamageType.Kill:
+                PlaySound("death");
                 Instantiate(bloodCorpsePrefab, transform.position, Quaternion.identity);
+                ExitStairs.enemiesOnFloor.Remove(this); // me desuscribo ya que mori
                 Destroy(this.gameObject);
                 break;
         }
@@ -47,6 +62,22 @@ public class EnemyController : MonoBehaviour
         // checkeo de integridad para que funcione el onEnable
         // estan medio acopladas las clases, pero lo dejo como solucion rapida.
         alterState.enabled = true;
+    }
+
+    public void PlaySound(string v)
+    {
+        switch (v)
+        {
+            case "idle":
+                sfxEnemy.PlayOneShot(sfxIdle);
+                break;
+            case "attack":
+                sfxEnemy.PlayOneShot(sfxAttack);
+                break;
+            case "death":
+                sfxEnemy.PlayOneShot(sfxDeath);
+                break;
+        }
     }
 }
 

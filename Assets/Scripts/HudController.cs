@@ -15,14 +15,30 @@ public class HudController : MonoBehaviour
     public Text pointsText;
     public Text missionText;
 
+    public GameObject defeatPanelPrefab;
+
     private void Awake()
     {
         if (current == null)
             HudController.current = this;
     }
-    
-    public void UpdateRoundsUI(int newVal) {
-        this.roundsText.text = newVal + " rnds.";
+    private void Start()
+    {
+        GameManagerActions.current.defeatEvent.AddListener(InstantiateDefeatPanel);
+    }
+
+    public void InstantiateDefeatPanel()
+    {
+        var pnl = Instantiate(defeatPanelPrefab, transform.position, Quaternion.identity, this.transform);
+    }
+
+    public void UpdateRoundsUI(int curVal, int maxVal)
+    {
+        if (maxVal != 0)
+            this.roundsText.text = curVal + "/" + maxVal + " rnds.";
+        else
+            this.roundsText.text = "melee";
+
     }
     public void UpdatePointsUI(int newVal)
     {

@@ -21,15 +21,10 @@ public class PlayerController : MonoBehaviour
     public string walkingAnimatorParam = "isWalking";
 
 
-    public UnityEvent deadEvent;
 
 
     void Awake()
     {
-        if (this.deadEvent == null)
-        {
-            this.deadEvent = new UnityEvent();
-        }
         if (this.animator == null)
         {
             this.animator = GetComponent<Animator>();
@@ -42,14 +37,23 @@ public class PlayerController : MonoBehaviour
         {
             this.rbPlayer = GetComponent<Rigidbody2D>();
         }
+
+    }
+    private void Start()
+    {
+        GameManagerActions.current.defeatEvent.AddListener(DisableComponent);
+    }
+    public void DisableComponent()
+    {
+        this.enabled = false;
     }
 
-    public void Damage()
+    public void TakeDamage()
     {
         Debug.Log("Damaging... Died.");
-        if (this.deadEvent != null)
+        if (GameManagerActions.current.defeatEvent != null)
         {
-            this.deadEvent.Invoke();
+            GameManagerActions.current.defeatEvent.Invoke();
         }
     }
 

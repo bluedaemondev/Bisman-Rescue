@@ -7,7 +7,7 @@ public class FetchAndAttack : MonoBehaviour
     public Transform currentTarget;
     public float speedMov = 5;
 
-    public float delayToChase = 0.1f;
+    public float attackDelay = 0.25f;
     public bool isChasing;
 
 
@@ -16,8 +16,43 @@ public class FetchAndAttack : MonoBehaviour
     private void Start()
     {
         this.colTrigger = GetComponent<CircleCollider2D>();
+
+        GameManagerActions.current.defeatEvent.AddListener(this.DisableComponent);
     }
 
+    public void DisableComponent()
+    {
+        this.enabled = false;
+    }
+
+    private IEnumerator DelayAttack()
+    {
+        print("delayed attack");
+        yield return new WaitForSeconds(attackDelay); // evito la muerte instantanea
+
+        Vector3 aimDirection = (currentTarget.transform.position - transform.position).normalized;
+        float angleRot = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+
+        var hit = Physics2D.BoxCast(transform.position, Vector2.one * 3, angleRot, aimDirection*2.4f);
+        Debug.DrawRay(transform.position, aimDirection, Color.black);
+        print(hit.collider);
+
+        GetComponent<EnemyController>().PlaySound("attack");
+
+        //if (hit != null)
+        //{
+        PlayerController p_aux;
+        hit.collider.TryGetComponent<PlayerController>(out p_aux);
+
+        print(p_aux);
+
+        if (p_aux)
+        {
+            print("in range, attacking");
+            p_aux.TakeDamage();
+        }
+        //}
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,7 +60,7 @@ public class FetchAndAttack : MonoBehaviour
         {
             this.currentTarget = collision.transform;
             isChasing = true;
-            //StartCoroutine(DelayChase());
+            StartCoroutine(DelayAttack());
         }
     }
 
@@ -48,7 +83,7 @@ public class FetchAndAttack : MonoBehaviour
             var movVector = Vector2.MoveTowards(transform.position, currentTarget.position, speedMov * Time.deltaTime);
             transform.position = movVector;
         }
-        
+
     }
 
     // tbd

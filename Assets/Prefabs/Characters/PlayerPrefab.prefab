@@ -176,9 +176,6 @@ MonoBehaviour:
   animator: {fileID: 0}
   p_ParticlesShoot: {fileID: 0}
   walkingAnimatorParam: isWalking
-  deadEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &5544803171496140656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +197,7 @@ MonoBehaviour:
     type: 3}
   gunAnimator: {fileID: 0}
   equipedGun: {fileID: 0}
+  clipMelee: {fileID: 8300000, guid: 8ec6d0ddbf1e4a54d9356a9733ad4e09, type: 3}
 --- !u!58 &5544803171496140659
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -259,7 +257,7 @@ GameObject:
   - component: {fileID: 4067615378469796366}
   m_Layer: 10
   m_Name: GUN
-  m_TagString: Untagged
+  m_TagString: gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -316,7 +314,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8d8f441b801a9e7478668276dcd72cc2, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -324,6 +322,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

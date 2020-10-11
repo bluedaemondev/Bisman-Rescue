@@ -14,6 +14,11 @@ public class AlteredState : MonoBehaviour
     public Sprite startSprite;
     public Sprite spriteAlter;
 
+    private CircleCollider2D radiusForKill; // trigger para permitir matar un enemigo noqueado
+    public float radiusKill = 2.4f; // configurable del editor para el rango
+    public KeyCode killKey = KeyCode.Space;
+    GameObject corpsePrefab;
+
     //desactivo el movimiento/busqueda
     private void OnEnable()
     {
@@ -22,6 +27,9 @@ public class AlteredState : MonoBehaviour
         this.GetComponent<FetchAndAttack>().enabled = false;
         this.GetComponent<FetchAndAttack>().isChasing = false;
         this.GetComponent<FetchAndAttack>().colTrigger.enabled = false;
+
+        if (radiusForKill)
+            radiusForKill.enabled = true;
     }
     private void Start()
     {
@@ -31,7 +39,21 @@ public class AlteredState : MonoBehaviour
             descOpt = "stays in ground for " + currentTimer + " seconds."
         };
         this.sprRend = this.GetComponentInChildren<SpriteRenderer>();
+        this.radiusForKill = this.gameObject.AddComponent<CircleCollider2D>();
+        this.radiusForKill.isTrigger = true;
+        this.radiusForKill.radius = this.radiusKill;
 
+        this.corpsePrefab = GetComponent<EnemyController>().bloodCorpsePrefab;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (Input.GetKeyDown(killKey) &&
+            collision.gameObject.layer == GameInfo.PLAYER_LAYER)
+        {
+            GameObject corpse = Instantiate(corpsePrefab, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
     }
 
     private void Update()
@@ -55,7 +77,9 @@ public class AlteredState : MonoBehaviour
         this.GetComponent<WaypointPatrol>().enabled = true;
         this.currentTimer = TIME_GET_UP;
         this.sprRend.sprite = startSprite;
-        this.enabled = false; // Cuando se levanta el enemigo, se desactiva el estado y reseteo
 
+        this.radiusForKill.enabled = false; // saco la posibilidad de matarlo
+
+        this.enabled = false; // Cuando se levanta el enemigo, se desactiva el estado y reseteo
     }
 }

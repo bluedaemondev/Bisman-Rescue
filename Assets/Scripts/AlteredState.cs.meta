@@ -3,7 +3,12 @@ guid: 347cc719f2f05e544b9ec6380a8b2eb9
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - sprRend: {instanceID: 0}
+  - startSprite: {instanceID: 0}
+  - spriteAlter: {instanceID: 0}
+  - corpsePrefab: {fileID: 3816526933116111699, guid: b6458acbc24250e4c86ea706af76b8bc,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

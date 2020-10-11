@@ -63,7 +63,12 @@ public class WaypointPatrol : MonoBehaviour
             var r_stay = this.GetComponent<RandomStayInPlace>();
             var r_result = r_stay.StaysInPlace();
 
-            print("stay? " + r_result);
+            if (r_result)
+            {
+                GetComponent<EnemyController>().PlaySound("idle");
+            }
+
+            //print("stay? " + r_result);
         }
     }
 }
