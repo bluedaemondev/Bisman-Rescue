@@ -51,6 +51,9 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage()
     {
         Debug.Log("Damaging... Died.");
+
+        CameraShaker.current.ScreenShake(0.3f);
+        
         if (GameManagerActions.current.defeatEvent != null)
         {
             GameManagerActions.current.defeatEvent.Invoke();

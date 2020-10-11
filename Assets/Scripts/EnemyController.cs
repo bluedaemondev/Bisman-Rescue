@@ -33,6 +33,8 @@ public class EnemyController : MonoBehaviour
     public void Damage(DamageType type)
     {
         Debug.Log("Damaged Enemy " + this.name);
+        CameraShaker.current.ScreenShake(0.3f);
+
         switch (type)
         {
             case DamageType.Knock:
