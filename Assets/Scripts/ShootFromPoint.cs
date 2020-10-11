@@ -51,23 +51,25 @@ public class ShootFromPoint : MonoBehaviour
 
         TurnGunpoint(mousePos);
 
-        //Click
-        if (Input.GetMouseButton(0) && currentCooldown > gunCooldown)
+        // hit
+        if (Input.GetMouseButtonDown(0) && !gunScript)
+        {
+            MeleeAttack(mousePos);
+        }
+        // shoot
+        else if (Input.GetMouseButton(0) && gunScript && currentCooldown > gunCooldown)
         {
             ShootBullet(mousePos);
 
             //this.gunAnimator.SetBool(clickAnimParam, true);
         }
-        //Throw
+        // throw gun
         else if (Input.GetMouseButton(1) && gunScript)
         {
             ThrowWeapon(mousePos);
             //this.gunAnimator.SetBool(throwAnimParam, true);
         }
-        else
-        {
-            MeleeAttack(mousePos);
-        }
+        
         this.currentCooldown += Time.deltaTime;
 
 
@@ -77,11 +79,13 @@ public class ShootFromPoint : MonoBehaviour
     //{
     //    if (collision.gameObject.layer == bulletPrefab.layer)
     //}
-    private void TurnGunpoint(Vector3 mousePos)
+    private Vector3 TurnGunpoint(Vector3 mousePos)
     {
         Vector3 aimDirection = (mousePos - transform.position).normalized;
         float angleRot = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         gunpoint.transform.eulerAngles = new Vector3(0, 0, angleRot);
+
+        return gunpoint.transform.eulerAngles;
         //Debug.Log("Gunpoimt angle = " + angleRot);
     }
 
@@ -117,6 +121,7 @@ public class ShootFromPoint : MonoBehaviour
 
         this.currentCooldown = 0; // Reseteo el cd
 
+        HudController.current.UpdateRoundsUI(--gunScript.currAmmo);
     }
 
     void ThrowWeapon(Vector3 mousePos)
@@ -130,7 +135,7 @@ public class ShootFromPoint : MonoBehaviour
 
             var throwLikeABullet = gunThrown.AddComponent<Bullet>();
             throwLikeABullet.forceToAppend = directionVector;
-            
+
             Destroy(this.GetComponent<GunScript>()); // le rompo el arma, ya que la tiro
 
         }
@@ -138,13 +143,16 @@ public class ShootFromPoint : MonoBehaviour
 
     void MeleeAttack(Vector3 mousePos)
     {
-        float angleAttack = Mathf.Rad2Deg * Mathf.Atan2(this.transform.position.x - mousePos.x, mousePos.y);
+        float angleAttack = TurnGunpoint(mousePos).z;
         Vector2 directionVector = transform.position - mousePos;
 
         var attackTarget = Physics2D.BoxCast(transform.position, this.sizeMeleeAttack, angleAttack, directionVector);
 
+        this.GetComponent<Animator>().Play("playerMelee");
+
         if (attackTarget.collider) // si tengo alguna colision me fijo si es un enemigo y le mando el mensaje de nokeado
         {
+            Debug.Log(attackTarget.collider);
             EnemyController compTarget;
 
             attackTarget.collider.TryGetComponent<EnemyController>(out compTarget);

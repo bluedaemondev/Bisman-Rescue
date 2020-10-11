@@ -117,7 +117,7 @@ MonoBehaviour:
   diesInCollision: 0
   forceToAppend: {x: 0, y: 0}
   particlesOnCrash: {fileID: 0}
-  damageType: 1
+  damageType: 0
 --- !u!198 &2220535753459367849
 ParticleSystem:
   m_ObjectHideFlags: 0
