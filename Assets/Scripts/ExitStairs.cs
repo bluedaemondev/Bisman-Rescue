@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class ExitStairs : MonoBehaviour
 {
-    public static List<EnemyController> enemiesOnFloor;
+    public static List<EnemyController> enemiesOnFloor= new List<EnemyController>();
 
     private void Start()
     {
-        enemiesOnFloor = new List<EnemyController>();
 
         //GameManagerActions.current.defeatEvent.AddListener(ResetConditions);
         //GameManagerActions.current.winEvent.AddListener(ResetConditions);

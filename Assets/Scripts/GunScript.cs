@@ -29,7 +29,7 @@ public class GunScript : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKeyDown(pickupKey))
+        if (Input.GetKeyDown(pickupKey) && collision.gameObject.layer == GameInfo.PLAYER_LAYER)
         {
             var cpyTest = Instantiate(this);
             collision.GetComponent<ShootFromPoint>().SetGun(cpyTest);

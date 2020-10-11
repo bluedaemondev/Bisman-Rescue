@@ -33,9 +33,10 @@ public class FetchAndAttack : MonoBehaviour
         Vector3 aimDirection = (currentTarget.transform.position - transform.position).normalized;
         float angleRot = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
-        var hit = Physics2D.BoxCast(transform.position, Vector2.one * 3, angleRot, aimDirection*2.4f);
+        var hit = Physics2D.BoxCast(transform.position, Vector2.one * 3, 0, aimDirection);
+
         Debug.DrawRay(transform.position, aimDirection, Color.black);
-        print(hit.collider);
+        //print(hit.collider);
 
         GetComponent<EnemyController>().PlaySound("attack");
 
@@ -44,7 +45,7 @@ public class FetchAndAttack : MonoBehaviour
         PlayerController p_aux;
         hit.collider.TryGetComponent<PlayerController>(out p_aux);
 
-        print(p_aux);
+        //print(p_aux);
 
         if (p_aux)
         {

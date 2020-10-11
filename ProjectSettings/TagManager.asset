@@ -42,6 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: ObstacleOverDefault
+    uniqueID: 4084059729
+    locked: 0
   - name: Bullets
     uniqueID: 965454105
     locked: 0

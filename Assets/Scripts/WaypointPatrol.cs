@@ -19,9 +19,16 @@ public class WaypointPatrol : MonoBehaviour
         // tp al primer punto
         transform.position = waypoints[0].position;
         
-        // establezco el proximo
+        // establezco el proximo si se mueve
+        if(waypoints.Count > 1) { 
         currentWaypoint = waypoints[1];
         currentWaypointIndex = 1;
+        }
+        else
+        {
+            currentWaypoint = waypoints[0];
+            currentWaypointIndex = 0;
+        }
 
     }
 
@@ -60,10 +67,10 @@ public class WaypointPatrol : MonoBehaviour
                 currentWaypoint = waypoints[next];
 
             // dejo que calcule su proximo punto pero me fijo si se queda un toque en el lugar
-            var r_stay = this.GetComponent<RandomStayInPlace>();
-            var r_result = r_stay.StaysInPlace();
-
-            if (r_result)
+            RandomStayInPlace r_stay; 
+            this.TryGetComponent<RandomStayInPlace>(out r_stay);
+            
+            if (r_stay && r_stay.StaysInPlace())
             {
                 GetComponent<EnemyController>().PlaySound("idle");
             }

@@ -158,10 +158,14 @@ public class ShootFromPoint : MonoBehaviour
             return;
         }
 
-        var bullet = Instantiate(bulletPrefab, gunpoint.transform.position, Quaternion.identity);
+        var bullet_go = Instantiate(bulletPrefab, gunpoint.transform.position, Quaternion.identity);
+        var bullet = bullet_go.GetComponent<Bullet>();
+
         var directionVector = (mousePos - gunpoint.transform.position).normalized;
 
-        bullet.GetComponent<Bullet>().forceToAppend = directionVector;
+        bullet.forceToAppend = directionVector;
+        bullet.parentToIgnoreCol = this.GetComponent<Collider2D>();
+
 
         this.currentCooldown = 0; // Reseteo el cd
 
@@ -178,7 +182,7 @@ public class ShootFromPoint : MonoBehaviour
 
             var throwLikeABullet = gunThrown.AddComponent<Bullet>();
 
-            throwLikeABullet.forceToAppend = directionVector * forceThrow * 4; //test
+            throwLikeABullet.forceToAppend = directionVector * forceThrow * 100; //test
             print(throwLikeABullet.forceToAppend);
 
             Destroy(this.gunScript.gameObject); // le rompo el arma, ya que la tiro
