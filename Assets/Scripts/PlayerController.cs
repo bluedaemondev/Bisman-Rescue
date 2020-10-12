@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Damaging... Died.");
 
-        CameraShaker.current.ScreenShake(0.3f);
+        CameraShaker.current.ScreenShake(0.3f, 10f);
         
         if (GameManagerActions.current.defeatEvent != null)
         {

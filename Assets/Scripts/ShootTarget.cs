@@ -32,7 +32,8 @@ public class ShootTarget : MonoBehaviour
 
     private IEnumerator DelayShoot(Vector3 target)
     {
-        yield return new WaitForSeconds(gunCooldown);
+        yield return new WaitForSeconds(gunCooldown); 
+        // meto un delay igual para que no sea en un instante y haya chance de dodgear
 
         ShootBullet(target);
 
@@ -55,13 +56,14 @@ public class ShootTarget : MonoBehaviour
             if (d_to_player <= distanceShootEnabled &&
                 !hitObstacle)
             {
-                print(this.name + " shooting!");
+                //print(this.name + " shooting!");
                 StartCoroutine(this.DelayShoot(playerPos));
                 
             }
 
-            print(d_to_player <= distanceShootEnabled && !hitObstacle);
+            //print(d_to_player <= distanceShootEnabled && !hitObstacle);
             // apunto el gunpoint
+
             if (!hitObstacle && hitPlayerPoint)
             {
                 Vector3 aimDirection = (hitPlayerPoint.transform.position - transform.position).normalized;
@@ -72,7 +74,7 @@ public class ShootTarget : MonoBehaviour
             }
         }
 
-        gunCooldown -= Time.deltaTime;
+        currentCooldown -= Time.deltaTime;
 
     }
 
@@ -100,11 +102,21 @@ public class ShootTarget : MonoBehaviour
             print("out of bullets " + this.name);
             //cambio de rutina al no tener balas
             this.gameObject.GetComponent<FetchAndAttack>().enabled = true;
+
+            AlteredState a_state;
+            TryGetComponent<AlteredState>(out a_state);
+
+            if (a_state)
+            {
+                a_state.lastFetchAndAttackActive = true;
+            }
             
             gunHolder.sprite = null;
-            Destroy(this.gunScript.gameObject); //test
             
             this.sfxPlayer.PlayOneShot(gunScript.sfxNoClip);
+
+            Destroy(this.gunScript.gameObject); //test
+
             this.enabled = false;
         }
 

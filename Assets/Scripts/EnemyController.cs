@@ -29,11 +29,15 @@ public class EnemyController : MonoBehaviour
         this.sfxEnemy = GetComponentInChildren<AudioSource>();
         ExitStairs.enemiesOnFloor.Add(this);
     }
+    private void OnDestroy()
+    {
+        ExitStairs.enemiesOnFloor.Remove(this);
+    }
 
     public void Damage(DamageType type)
     {
         Debug.Log("Damaged Enemy " + this.name);
-        CameraShaker.current.ScreenShake(0.3f);
+        CameraShaker.current.ScreenShake(0.3f, 2.5f);
 
         switch (type)
         {
@@ -44,7 +48,7 @@ public class EnemyController : MonoBehaviour
             case DamageType.Kill:
                 PlaySound("death");
                 Instantiate(bloodCorpsePrefab, transform.position, Quaternion.identity);
-                ExitStairs.enemiesOnFloor.Remove(this); // me desuscribo ya que mori
+                //ExitStairs.enemiesOnFloor.Remove(this); // me desuscribo ya que mori
                 Destroy(this.gameObject);
                 break;
         }

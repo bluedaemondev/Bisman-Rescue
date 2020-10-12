@@ -19,14 +19,22 @@ public class AlteredState : MonoBehaviour
     public KeyCode killKey = KeyCode.Space;
     GameObject corpsePrefab;
 
+    public bool lastFetchAndAttackActive;
+
     //desactivo el movimiento/busqueda
     private void OnEnable()
     {
         this.GetComponent<WaypointPatrol>().enabled = false;
+        
+        ShootTarget opt_shooter;
+        TryGetComponent<ShootTarget>(out opt_shooter);
+        if (opt_shooter)
+            opt_shooter.enabled = false;
 
-        this.GetComponent<FetchAndAttack>().enabled = false;
         this.GetComponent<FetchAndAttack>().isChasing = false;
         this.GetComponent<FetchAndAttack>().colTrigger.enabled = false;
+
+        this.GetComponent<FetchAndAttack>().enabled = false;
 
         if (radiusForKill)
             radiusForKill.enabled = true;
@@ -44,6 +52,8 @@ public class AlteredState : MonoBehaviour
         this.radiusForKill.radius = this.radiusKill;
 
         this.corpsePrefab = GetComponent<EnemyController>().bloodCorpsePrefab;
+
+        lastFetchAndAttackActive = this.GetComponent<FetchAndAttack>().enabled;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -71,8 +81,11 @@ public class AlteredState : MonoBehaviour
 
     private void GetUp()
     {
-        this.GetComponent<FetchAndAttack>().enabled = true;
-        this.GetComponent<FetchAndAttack>().colTrigger.enabled = true;
+        // agregue el && para fijarme si antes de que se entre en el estado alterado
+        // tenia activado el componente. si dispara no viene activado por defecto, sino que se agrega por codigo y se
+        // llama a enable ahi
+        this.GetComponent<FetchAndAttack>().enabled = true && lastFetchAndAttackActive;
+        this.GetComponent<FetchAndAttack>().colTrigger.enabled = true && lastFetchAndAttackActive;
 
         this.GetComponent<WaypointPatrol>().enabled = true;
         this.currentTimer = TIME_GET_UP;

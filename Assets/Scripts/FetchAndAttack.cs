@@ -9,6 +9,7 @@ public class FetchAndAttack : MonoBehaviour
 
     public float attackDelay = 0.25f;
     public bool isChasing;
+    public float radiusAttack = 6f;
 
 
     public CircleCollider2D colTrigger;
@@ -16,6 +17,7 @@ public class FetchAndAttack : MonoBehaviour
     private void Start()
     {
         this.colTrigger = GetComponent<CircleCollider2D>();
+        this.colTrigger.enabled = this.enabled;
 
         GameManagerActions.current.defeatEvent.AddListener(this.DisableComponent);
     }
@@ -59,9 +61,14 @@ public class FetchAndAttack : MonoBehaviour
     {
         if (collision.gameObject.layer == GameInfo.PLAYER_LAYER)
         {
-            this.currentTarget = collision.transform;
-            isChasing = true;
-            StartCoroutine(DelayAttack());
+            var wallCheck = Physics2D.Raycast(transform.position, collision.transform.position, colTrigger.radius);
+            
+            if (!(wallCheck.collider.gameObject.layer == GameInfo.OBSTACLE_LAYER))
+            {
+                this.currentTarget = collision.transform;
+                isChasing = true;
+                StartCoroutine(DelayAttack());
+            }
         }
     }
 
@@ -78,7 +85,7 @@ public class FetchAndAttack : MonoBehaviour
             return;
         // si hay algo en el medio tampoco se mueve
 
-        if (isChasing && Vector2.Distance(transform.position, currentTarget.position) <= 5f)
+        if (isChasing && Vector2.Distance(transform.position, currentTarget.position) <= radiusAttack)
         {
             // moverse hacia el objetivo
             var movVector = Vector2.MoveTowards(transform.position, currentTarget.position, speedMov * Time.deltaTime);
@@ -89,10 +96,10 @@ public class FetchAndAttack : MonoBehaviour
 
     // tbd
 
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    StartCoroutine(DelayChase());
-    //}
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isChasing = false;
+    }
 
     //private void ResetChase()
     //{

@@ -40,8 +40,9 @@ public class WaypointPatrol : MonoBehaviour
 
         // translation
         var movVector = Vector2.MoveTowards(transform.position, currentWaypoint.position, speedMov * Time.deltaTime);
-        transform.position = movVector;
+        //transform.position = movVector;
 
+        GetComponent<Rigidbody2D>().MovePosition(movVector);
         //resetea si llego al final de la lista
         CheckForReset();
 

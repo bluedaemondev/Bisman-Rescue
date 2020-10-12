@@ -9,7 +9,7 @@ public class ExitStairs : MonoBehaviour
 
     private void Start()
     {
-
+        enemiesOnFloor = new List<EnemyController>();
         //GameManagerActions.current.defeatEvent.AddListener(ResetConditions);
         //GameManagerActions.current.winEvent.AddListener(ResetConditions);
     }
