@@ -20,6 +20,7 @@ public class ExitStairs : MonoBehaviour
         {
             //condicion de subir de nivel = matar a todos los enemigos
             GameManagerActions.current.winEvent.Invoke();
+
         }
         else
         {
