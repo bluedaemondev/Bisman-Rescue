@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class WaypointPatrol : MonoBehaviour
 {
+    [Header("Para definir el recorrido que hace")]
     public bool resetsOnFinalWaypoint;
     public List<Transform> waypoints;
-
     public float speedMov;
 
     public Transform currentWaypoint;

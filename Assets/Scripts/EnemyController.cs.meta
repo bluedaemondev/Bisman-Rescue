@@ -3,7 +3,12 @@ guid: 89274c3f8b4392d41acdb17d4cfc6569
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bloodCorpsePrefab: {fileID: 3816526933116111699, guid: b6458acbc24250e4c86ea706af76b8bc,
+      type: 3}
+  - sfxDeath: {fileID: 8300000, guid: 7bda14e48c5b867469289db4de5d0c3a, type: 3}
+  - sfxAttack: {fileID: 8300000, guid: 9d9ac95db7505f34f8c8ee235ca74bd2, type: 3}
+  - sfxIdle: {fileID: 8300000, guid: b5b0642fdd0382440a1ef6824c35fadd, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

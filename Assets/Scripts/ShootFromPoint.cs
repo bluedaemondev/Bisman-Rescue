@@ -209,7 +209,7 @@ public class ShootFromPoint : MonoBehaviour
             attackTarget.collider.TryGetComponent<EnemyController>(out compTarget);
             if (compTarget)
             {
-                compTarget.Damage(DamageType.Knock);
+                compTarget.TakeDamage(DamageType.Knock);
             }
         }
         

@@ -51,7 +51,7 @@ public class ShootTarget : MonoBehaviour
             var d_to_player = Vector2.Distance(playerPos, this.transform.position);
             //distancia habilitada + no hay obstaculos en el medio
 
-            print(d_to_player);
+            //print(d_to_player);
 
             if (d_to_player <= distanceShootEnabled &&
                 !hitObstacle)
@@ -106,10 +106,10 @@ public class ShootTarget : MonoBehaviour
             AlteredState a_state;
             TryGetComponent<AlteredState>(out a_state);
 
-            if (a_state)
-            {
-                a_state.lastFetchAndAttackActive = true;
-            }
+            //if (a_state)
+            //{
+            //    a_state.lastFetchAndAttackActive = true;
+            //}
             
             gunHolder.sprite = null;
             

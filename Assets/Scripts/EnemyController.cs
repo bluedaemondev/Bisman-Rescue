@@ -3,7 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// sistema de vidas tratado como estados
+/// los enemigos pasan por el estado de noqueado
+/// </summary>
 public enum DamageType
 {
     Knock,
@@ -24,6 +27,7 @@ public class EnemyController : MonoBehaviour
     public AudioClip sfxIdle;
 
 
+
     private void Start()
     {
         this.sfxEnemy = GetComponentInChildren<AudioSource>();
@@ -34,7 +38,7 @@ public class EnemyController : MonoBehaviour
         ExitStairs.enemiesOnFloor.Remove(this);
     }
 
-    public void Damage(DamageType type)
+    public void TakeDamage(DamageType type)
     {
         Debug.Log("Damaged Enemy " + this.name);
         CameraShaker.current.ScreenShake(0.3f, 2.5f);
@@ -56,6 +60,10 @@ public class EnemyController : MonoBehaviour
 
     void SetKnockedState()
     {
+        this.GetComponent<WaypointPatrol>().enabled = false;
+        //this.GetComponent<FetchAndAttack>().isChasing = false;   // chekear esto 27-10
+        //this.GetComponent<FetchAndAttack>().colTrigger.enabled = false;
+        this.GetComponent<FetchAndAttack>().enabled = false;
 
         AlteredState alterState;
         // miro si lo tiene, sino agrego.

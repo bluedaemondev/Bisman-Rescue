@@ -17,24 +17,18 @@ public class AlteredState : MonoBehaviour
     private CircleCollider2D radiusForKill; // trigger para permitir matar un enemigo noqueado
     public float radiusKill = 2.4f; // configurable del editor para el rango
     public KeyCode killKey = KeyCode.Space;
+    
     GameObject corpsePrefab;
 
-    public bool lastFetchAndAttackActive;
 
     //desactivo el movimiento/busqueda
     private void OnEnable()
     {
-        this.GetComponent<WaypointPatrol>().enabled = false;
-        
+       
         ShootTarget opt_shooter;
         TryGetComponent<ShootTarget>(out opt_shooter);
         if (opt_shooter)
             opt_shooter.enabled = false;
-
-        this.GetComponent<FetchAndAttack>().isChasing = false;
-        this.GetComponent<FetchAndAttack>().colTrigger.enabled = false;
-
-        this.GetComponent<FetchAndAttack>().enabled = false;
 
         if (radiusForKill)
             radiusForKill.enabled = true;
@@ -47,13 +41,14 @@ public class AlteredState : MonoBehaviour
             descOpt = "stays in ground for " + currentTimer + " seconds."
         };
         this.sprRend = this.GetComponentInChildren<SpriteRenderer>();
+        
         this.radiusForKill = this.gameObject.AddComponent<CircleCollider2D>();
         this.radiusForKill.isTrigger = true;
         this.radiusForKill.radius = this.radiusKill;
 
         this.corpsePrefab = GetComponent<EnemyController>().bloodCorpsePrefab;
 
-        lastFetchAndAttackActive = this.GetComponent<FetchAndAttack>().enabled;
+        
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -84,8 +79,11 @@ public class AlteredState : MonoBehaviour
         // agregue el && para fijarme si antes de que se entre en el estado alterado
         // tenia activado el componente. si dispara no viene activado por defecto, sino que se agrega por codigo y se
         // llama a enable ahi
-        this.GetComponent<FetchAndAttack>().enabled = true && lastFetchAndAttackActive;
-        this.GetComponent<FetchAndAttack>().colTrigger.enabled = true && lastFetchAndAttackActive;
+
+        //nota: borre eso de arriba, creo que no sirvio para nada
+
+        this.GetComponent<FetchAndAttack>().enabled = true ;
+        this.GetComponent<FetchAndAttack>().colTrigger.enabled = true;
 
         this.GetComponent<WaypointPatrol>().enabled = true;
         this.currentTimer = TIME_GET_UP;

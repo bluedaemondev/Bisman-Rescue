@@ -49,7 +49,7 @@ public class Bullet : MonoBehaviour
 
         if (collision.gameObject.layer == GameInfo.ENEMY_LAYER) //ENEMY
         {
-            collision.gameObject.GetComponent<EnemyController>().Damage(this.damageType);
+            collision.gameObject.GetComponent<EnemyController>().TakeDamage(this.damageType);
         }
         else if(collision.gameObject.layer == GameInfo.PLAYER_LAYER)
         {
