@@ -13,6 +13,8 @@ public class ShootTarget : MonoBehaviour
     public float distanceShootEnabled = 9f;
     public AudioSource sfxPlayer;
 
+    private bool canShoot = true;
+
 
     public GameObject bulletPrefab;
     // Start is called before the first frame update
@@ -32,10 +34,11 @@ public class ShootTarget : MonoBehaviour
 
     private IEnumerator DelayShoot(Vector3 target)
     {
-        yield return new WaitForSeconds(gunCooldown); 
+        canShoot = false;
+        yield return new WaitForSeconds(gunCooldown);
         // meto un delay igual para que no sea en un instante y haya chance de dodgear
-
         ShootBullet(target);
+        canShoot = true;
 
     }
 
@@ -43,7 +46,7 @@ public class ShootTarget : MonoBehaviour
     {
         var playerPos = GameObject.FindObjectOfType<PlayerController>().transform.position;
 
-        if (this.currentCooldown <= 0)
+        if (this.currentCooldown <= 0 && canShoot)
 
         {
             var hitObstacle = Physics2D.Raycast(transform.position, playerPos, distanceShootEnabled, GameInfo.OBSTACLE_LAYER);
@@ -51,27 +54,30 @@ public class ShootTarget : MonoBehaviour
             var d_to_player = Vector2.Distance(playerPos, this.transform.position);
             //distancia habilitada + no hay obstaculos en el medio
 
+            var d_between_me_and_obstacle = Vector2.Distance(this.transform.position, hitObstacle.point); // correccion de tp
+
             //print(d_to_player);
 
             if (d_to_player <= distanceShootEnabled &&
-                !hitObstacle)
+                d_between_me_and_obstacle >= d_to_player)
             {
-                //print(this.name + " shooting!");
+                print(this.name + " shooting!");
                 StartCoroutine(this.DelayShoot(playerPos));
-                
+
             }
 
             //print(d_to_player <= distanceShootEnabled && !hitObstacle);
             // apunto el gunpoint
 
-            if (!hitObstacle && hitPlayerPoint)
+            if (gunpoint != null) // correccion tp
             {
-                Vector3 aimDirection = (hitPlayerPoint.transform.position - transform.position).normalized;
+                Vector3 aimDirection = (playerPos - transform.position).normalized;
                 float angleRot = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
-                gunpoint.transform.eulerAngles = new Vector3(0, 0, angleRot);
 
+                gunpoint.transform.eulerAngles = new Vector3(0, 0, angleRot);
             }
+
         }
 
         currentCooldown -= Time.deltaTime;
@@ -106,16 +112,10 @@ public class ShootTarget : MonoBehaviour
             AlteredState a_state;
             TryGetComponent<AlteredState>(out a_state);
 
-            //if (a_state)
-            //{
-            //    a_state.lastFetchAndAttackActive = true;
-            //}
-            
             gunHolder.sprite = null;
-            
             this.sfxPlayer.PlayOneShot(gunScript.sfxNoClip);
 
-            Destroy(this.gunScript.gameObject); //test
+            Destroy(this.gunScript.gameObject);
 
             this.enabled = false;
         }
