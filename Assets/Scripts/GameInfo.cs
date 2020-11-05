@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameInfo 
+public class GameInfo :MonoBehaviour
 {
+    public static GameInfo instance { get; private set; }
+    
     public static int ENEMY_LAYER = 8;
     public static int ENEMY_BULLET_LAYER = 9;
     
@@ -13,5 +15,13 @@ public class GameInfo
     
     public static int BULLET_LAYER = 13;
 
+    public Transform particlesContainer;
 
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
 }
