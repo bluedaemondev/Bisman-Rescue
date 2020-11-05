@@ -1060,7 +1060,7 @@ GameObject:
   m_Component:
   - component: {fileID: 789672408}
   m_Layer: 0
-  m_Name: '--------Props---------------'
+  m_Name: '--------Props--------------------'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1798,7 +1798,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1388214141}
   m_Layer: 0
-  m_Name: '--------Particles------------'
+  m_Name: '--------Particles-----------------'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2060,6 +2060,7 @@ MonoBehaviour:
   prefabParticlesOnExplode: {fileID: 4975125205465823784, guid: 71ced0fcd16e08f4c968c7752bfaf93b,
     type: 3}
   animObject: {fileID: 1522890705}
+  radiusExplosion: 2
 --- !u!95 &1522890705
 Animator:
   serializedVersion: 3
