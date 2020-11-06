@@ -7,7 +7,7 @@ public class ExitStairs : MonoBehaviour
 {
     public static List<EnemyController> enemiesOnFloor= new List<EnemyController>();
 
-    private void Start()
+    private void Awake()
     {
         enemiesOnFloor = new List<EnemyController>();
         //GameManagerActions.current.defeatEvent.AddListener(ResetConditions);

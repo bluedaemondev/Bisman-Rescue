@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(HealthScript), typeof(Rigidbody2D), typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeedMultip = 6.5f;
     public bool activeMovement = true;
 
     [Header("Componentes de objeto")]
-    public Rigidbody2D rbPlayer;
     public SpriteRenderer sprRend;
     public Animator animator;
 
@@ -21,22 +21,16 @@ public class PlayerController : MonoBehaviour
     public string walkingAnimatorParam = "isWalking";
 
 
+    private Rigidbody2D rbPlayer;
+    private HealthScript hScript;
 
 
     void Awake()
     {
-        if (this.animator == null)
-        {
-            this.animator = GetComponent<Animator>();
-        }
-        if (this.sprRend == null)
-        {
-            this.sprRend = GetComponentInChildren<SpriteRenderer>();
-        }
-        if (this.rbPlayer == null)
-        {
-            this.rbPlayer = GetComponent<Rigidbody2D>();
-        }
+        this.animator = GetComponent<Animator>();
+        this.sprRend = GetComponentInChildren<SpriteRenderer>();
+        this.rbPlayer = GetComponent<Rigidbody2D>();
+        this.hScript = GetComponent<HealthScript>();
 
     }
     private void Start()
@@ -50,11 +44,12 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage()
     {
-        Debug.Log("Damaging... Died.");
+        //Debug.Log("Damaging... Died.");
+        //CamerasManager.ShakeCameraNormal(cameraShakeOnDmg, 0.2f);
 
-        CameraShaker.current.ScreenShake(0.3f, 10f);
-        
-        if (GameManagerActions.current.defeatEvent != null)
+        bool died = hScript.GetDamage(hScript.maxLife);
+
+        if (died && GameManagerActions.current.defeatEvent != null)
         {
             GameManagerActions.current.defeatEvent.Invoke();
         }
@@ -72,13 +67,15 @@ public class PlayerController : MonoBehaviour
     {
         if (activeMovement)
         {
-            //transform.position += new Vector3(inputVals.x * Time.deltaTime * moveSpeedMultip, inputVals.y * Time.deltaTime * moveSpeedMultip);
             var newPos = new Vector2(transform.position.x + inputVals.x * Time.deltaTime * moveSpeedMultip, transform.position.y + inputVals.y * Time.deltaTime * moveSpeedMultip);
             rbPlayer.MovePosition(newPos);
 
-            //var localScale = this.transform.localScale; // flip
-            //localScale.x = Mathf.Abs(localScale.x) * Mathf.Sign(inputVals.x);
-            //this.transform.localScale = localScale;
+            //transform.position += new Vector3(inputVals.x * Time.deltaTime * moveSpeedMultip, inputVals.y * Time.deltaTime * moveSpeedMultip);
+            
+            //flip sprite
+            var localScale = this.sprRend.transform.localScale; // flip
+            localScale.x = Mathf.Abs(localScale.x) * Mathf.Sign(inputVals.x);
+            this.sprRend.transform.localScale = localScale;
         }
 
     }

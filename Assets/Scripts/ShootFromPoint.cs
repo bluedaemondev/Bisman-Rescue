@@ -197,22 +197,22 @@ public class ShootFromPoint : MonoBehaviour
         float angleAttack = TurnGunpoint(mousePos).z;
         Vector2 directionVector = transform.position - mousePos;
 
-        var attackTarget = Physics2D.BoxCast(transform.position, this.sizeMeleeAttack, angleAttack, directionVector);
+        var attackTarget = Physics2D.BoxCast(transform.position, this.sizeMeleeAttack, angleAttack, Vector2.zero);
 
         this.GetComponent<Animator>().Play("playerMelee");
 
-        if (attackTarget.collider) // si tengo alguna colision me fijo si es un enemigo y le mando el mensaje de nokeado
+        if (attackTarget.collider.gameObject.layer == GameInfo.ENEMY_LAYER) // si tengo alguna colision me fijo si es un enemigo y le mando el mensaje de nokeado
         {
             //Debug.Log(attackTarget.collider);
-            EnemyController compTarget;
-
-            attackTarget.collider.TryGetComponent<EnemyController>(out compTarget);
-            if (compTarget)
-            {
-                compTarget.TakeDamage(DamageType.Knock);
-            }
+            //attackTarget.collider.TryGetComponent(out compTarget);
+            //if (compTarget)
+            //{
+            //  compTarget.TakeDamage(DamageType.Knock);
+            //}
+            EnemyController compTarget = attackTarget.collider.GetComponent<EnemyController>();
+            compTarget.TakeDamage(DamageType.Knock);
         }
-        
+
         this.sfxPlayer.PlayOneShot(this.clipMelee);
 
     }

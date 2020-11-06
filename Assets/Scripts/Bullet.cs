@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     Rigidbody2D rbSelf;
     public float speedShot;
     public bool diesInCollision;
+    public int damage = 1;
 
     [Header("Vector direccion")]
     public Vector2 forceToAppend;
@@ -45,17 +46,20 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        #region refactor 20-11-05
         //print("hola");
 
-        if (collision.gameObject.layer == GameInfo.ENEMY_LAYER) //ENEMY
-        {
-            collision.gameObject.GetComponent<EnemyController>().TakeDamage(this.damageType);
-        }
-        else if(collision.gameObject.layer == GameInfo.PLAYER_LAYER)
-        {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage();
-        }
+        //if (collision.gameObject.layer == GameInfo.ENEMY_LAYER) //ENEMY
+        //{
+        //    collision.gameObject.GetComponent<EnemyController>().TakeDamage(this.damageType);
+        //}
+        //else if(collision.gameObject.layer == GameInfo.PLAYER_LAYER)
+        //{
+        //    collision.gameObject.GetComponent<PlayerController>().TakeDamage();
+        //}
+        #endregion
 
+        collision.gameObject.GetComponent<HealthScript>().GetDamage(damage);
         Destroy(this.gameObject);
 
     }

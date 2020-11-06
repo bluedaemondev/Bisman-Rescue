@@ -13,6 +13,7 @@ public enum DamageType
     Kill
 }
 
+[RequireComponent(typeof(HealthScript))]
 public class EnemyController : MonoBehaviour
 {
 
@@ -26,10 +27,12 @@ public class EnemyController : MonoBehaviour
     public AudioClip sfxAttack;
     public AudioClip sfxIdle;
 
+    private HealthScript hScript;
 
 
     private void Start()
     {
+        this.hScript = GetComponent<HealthScript>();
         this.sfxEnemy = GetComponentInChildren<AudioSource>();
         ExitStairs.enemiesOnFloor.Add(this);
     }
@@ -41,7 +44,7 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(DamageType type)
     {
         Debug.Log("Damaged Enemy " + this.name);
-        CameraShaker.current.ScreenShake(0.3f, 2.5f);
+        CamerasManager.ShakeCameraNormal(5f, 0.3f);
 
         switch (type)
         {

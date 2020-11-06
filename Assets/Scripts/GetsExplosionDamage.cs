@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(HealthScript))]
 public class GetsExplosionDamage : MonoBehaviour
 {
     /// <summary>
@@ -10,18 +11,18 @@ public class GetsExplosionDamage : MonoBehaviour
     /// 
     /// </summary>
 
+    public HealthScript hScript;
+    public int explosionDamageTaken = 2;
 
-    // health reutilizable???
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        if (hScript == null)
+            hScript = this.GetComponent<HealthScript>();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GetDamage()
     {
-        
+        hScript.GetDamage(explosionDamageTaken);
     }
 }
