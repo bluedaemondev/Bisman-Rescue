@@ -29,7 +29,8 @@ public class HealthScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        imgLife.color = colorLife;
+        if (imgLife)
+            imgLife.color = colorLife;
     }
     public void ResetLife()
     {
@@ -42,7 +43,7 @@ public class HealthScript : MonoBehaviour
     {
         bool died = false;
 
-        CamerasManager.ShakeCameraNormal(cameraShakeFactor, .1f);
+        CamerasManager.instance.ShakeCameraNormal(cameraShakeFactor, .1f);
         this.currentLife -= damage;
 
         if (currentLife <= 0)

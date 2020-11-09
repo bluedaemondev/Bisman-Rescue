@@ -59,8 +59,10 @@ public class Bullet : MonoBehaviour
         //}
         #endregion
 
-        collision.gameObject.GetComponent<HealthScript>().GetDamage(damage);
+        if (collision.gameObject.layer == GameInfo.ENEMY_LAYER)
+        {
+            collision.gameObject.GetComponent<HealthScript>().GetDamage(damage);
+        }
         Destroy(this.gameObject);
-
     }
 }

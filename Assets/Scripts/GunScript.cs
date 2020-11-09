@@ -31,10 +31,10 @@ public class GunScript : MonoBehaviour
     {
         if (Input.GetKeyDown(pickupKey) && collision.gameObject.layer == GameInfo.PLAYER_LAYER)
         {
-            var cpyTest = Instantiate(this);
-            collision.GetComponent<ShootFromPoint>().SetGun(cpyTest);
+            //var cpyTest = Instantiate(this);
+            collision.GetComponent<ShootFromPoint>().SetGun(this);
 
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
     }
 

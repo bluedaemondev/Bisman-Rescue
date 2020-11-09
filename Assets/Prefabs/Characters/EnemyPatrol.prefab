@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 3097575430329612832}
   - component: {fileID: 7753990251536080758}
   - component: {fileID: 5931525263144060930}
+  - component: {fileID: -3814600738633724916}
   m_Layer: 8
   m_Name: EnemyPatrol
   m_TagString: Untagged
@@ -212,6 +213,30 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-3814600738633724916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3097575430329612857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b48b0e0e401a5d7408a2aebed9e1b1a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imgLife: {fileID: 0}
+  currentLifeAlpha: 0
+  minVelocityToGetHit: 14
+  colorLife: {r: 0, g: 0, b: 0, a: 0}
+  canGetKnocked: 1
+  currentLife: 2
+  maxLife: 2
+  cameraShakeFactor: 5
+  deadScreenGO: {fileID: 0}
+  OnDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3097575430929808329
 GameObject:
   m_ObjectHideFlags: 0

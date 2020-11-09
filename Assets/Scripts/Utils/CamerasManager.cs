@@ -30,11 +30,14 @@ public class CamerasManager : MonoBehaviour
         currentCam = newCam;
 
         shakeVisible = currentCam.GetComponent<CameraShake>();
+        print(shakeVisible);
     }
 
-    public static void ShakeCameraNormal(float intensity, float time)
+    public void ShakeCameraNormal(float intensity, float time)
     {
-        instance.currentCam.GetComponent<CameraShake>().ShakeCameraNormal(intensity, time);
+        print(instance.shakeVisible);
+
+        instance.shakeVisible.ShakeCameraNormal(intensity, time);
     }
 
     public void DestroyCurrentCamera(float afterTime)

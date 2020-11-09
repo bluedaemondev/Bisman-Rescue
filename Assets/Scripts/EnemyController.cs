@@ -44,7 +44,7 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(DamageType type)
     {
         Debug.Log("Damaged Enemy " + this.name);
-        CamerasManager.ShakeCameraNormal(5f, 0.3f);
+        CamerasManager.instance.ShakeCameraNormal(5f, 0.3f);
 
         switch (type)
         {
