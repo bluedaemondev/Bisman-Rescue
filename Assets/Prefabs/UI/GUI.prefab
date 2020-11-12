@@ -290,6 +290,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   total: 0
   comboMultiplier: 1
+  timeToResetComboMultiplier: 4.5
+  currentTimeInCombo: 0
 --- !u!1 &6998764188524185378
 GameObject:
   m_ObjectHideFlags: 0

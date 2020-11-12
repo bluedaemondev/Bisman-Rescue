@@ -183,10 +183,13 @@ public class ShootFromPoint : MonoBehaviour
             var throwLikeABullet = gunThrown.AddComponent<Bullet>();
 
             throwLikeABullet.forceToAppend = directionVector * forceThrow * 100; //test
-            print(throwLikeABullet.forceToAppend);
+            print(this.name + " thrown gun at " + throwLikeABullet.forceToAppend);
 
             Destroy(this.gunScript.gameObject); // le rompo el arma, ya que la tiro
-            gunHolder.sprite = null;
+
+            if (gunHolder.sprite)
+                gunHolder.sprite = null;
+
             HudController.current.UpdateRoundsUI(0, 0);
         }
     }

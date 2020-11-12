@@ -5,12 +5,12 @@ using UnityEngine.Events;
 
 public class HealthScript : MonoBehaviour
 {
-    public UnityEngine.UI.Image imgLife;
+    /*public UnityEngine.UI.Image imgLife;
     public float currentLifeAlpha = 0;
 
     public float minVelocityToGetHit = 14f;
 
-    public Color colorLife;
+    public Color colorLife;*/
 
     [Header("Medidor de estados")]
     public bool canGetKnocked = true;
@@ -27,11 +27,11 @@ public class HealthScript : MonoBehaviour
     //magnitud hasta 18 tira el mouse
 
     // Start is called before the first frame update
-    void Start()
-    {
-        if (imgLife)
-            imgLife.color = colorLife;
-    }
+    //void Start()
+    //{
+    //    if (imgLife)
+    //        imgLife.color = colorLife;
+    //}
     public void ResetLife()
     {
         //currentLifeAlpha = 0;
