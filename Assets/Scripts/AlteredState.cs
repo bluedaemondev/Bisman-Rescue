@@ -14,19 +14,19 @@ public class AlteredState : MonoBehaviour
     public Sprite startSprite;
     public Sprite spriteAlter;
 
-    private CircleCollider2D radiusForKill; // trigger para permitir matar un enemigo noqueado
-    public float radiusKill = 2.4f; // configurable del editor para el rango
+    public CircleCollider2D radiusForKill; // trigger para permitir matar un enemigo noqueado
+    //public float radiusKill = 2.4f; // configurable del editor para el rango
     public KeyCode killKey = KeyCode.Space;
     
     GameObject corpsePrefab;
+
+    ShootTarget opt_shooter;
 
 
     //desactivo el movimiento/busqueda
     private void OnEnable()
     {
-       
-        ShootTarget opt_shooter;
-        TryGetComponent<ShootTarget>(out opt_shooter);
+        
         if (opt_shooter)
             opt_shooter.enabled = false;
 
@@ -41,13 +41,15 @@ public class AlteredState : MonoBehaviour
             descOpt = "stays in ground for " + currentTimer + " seconds."
         };
         this.sprRend = this.GetComponentInChildren<SpriteRenderer>();
+        TryGetComponent<ShootTarget>(out opt_shooter);
         
-        this.radiusForKill = this.gameObject.AddComponent<CircleCollider2D>();
-        this.radiusForKill.isTrigger = true;
-        this.radiusForKill.radius = this.radiusKill;
+        //this.radiusForKill = this.gameObject.AddComponent<CircleCollider2D>();
+        //this.radiusForKill.isTrigger = true;
+        //this.radiusForKill.radius = this.radiusKill;
 
         this.corpsePrefab = GetComponent<EnemyController>().bloodCorpsePrefab;
 
+        this.enabled = false;
         
     }
 
@@ -76,12 +78,6 @@ public class AlteredState : MonoBehaviour
 
     private void GetUp()
     {
-        // agregue el && para fijarme si antes de que se entre en el estado alterado
-        // tenia activado el componente. si dispara no viene activado por defecto, sino que se agrega por codigo y se
-        // llama a enable ahi
-
-        //nota: borre eso de arriba, creo que no sirvio para nada
-
         this.GetComponent<FetchAndAttack>().enabled = true ;
         this.GetComponent<FetchAndAttack>().colTrigger.enabled = true;
 

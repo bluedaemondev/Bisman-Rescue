@@ -1370,6 +1370,12 @@ Transform:
   m_Father: {fileID: 7195733328610232757}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1032447681 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2415353348134161463, guid: ba4d3d07f04a8eb4ca859fb3a98eec47,
+    type: 3}
+  m_PrefabInstance: {fileID: 5544803170867102719}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1052656490 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2567058059991655871, guid: 9d2bc897aec3d274fbff688f4e1d649e,
@@ -3723,6 +3729,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5544803171496140656, guid: ba4d3d07f04a8eb4ca859fb3a98eec47,
+        type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 1032447681}
     - target: {fileID: 5544803171496140661, guid: ba4d3d07f04a8eb4ca859fb3a98eec47,
         type: 3}
       propertyPath: m_LocalPosition.x

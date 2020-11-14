@@ -41,7 +41,8 @@ public class CursorScript : MonoBehaviour
 
         if (playerCoords == null)
         {
-            playerCoords = GameObject.FindGameObjectWithTag("Player").transform;
+            //playerCoords = GameObject.FindGameObjectWithTag("Player").transform;
+            playerCoords = GameObject.FindObjectOfType<PlayerController>().transform;
             CameraFollow(playerCoords.transform);
         }
     }

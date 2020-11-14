@@ -9,7 +9,7 @@ using Text = TMPro.TextMeshProUGUI;
 public class HudController : MonoBehaviour
 {
     // singleton para poder acceder desde los otros scripts
-    public static HudController current;
+    public static HudController current { get; private set; }
 
     public Text roundsText;
     public Text pointsText;
@@ -20,7 +20,7 @@ public class HudController : MonoBehaviour
     private void Awake()
     {
         if (current == null)
-            HudController.current = this;
+            current = this;
     }
     private void Start()
     {

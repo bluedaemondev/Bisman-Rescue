@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PointsManager : MonoBehaviour
 {
-    public static PointsManager current;
+    public static PointsManager current { get; private set; }
 
     public int total = 0;
     public float comboMultiplier = 1; 
@@ -15,7 +15,7 @@ public class PointsManager : MonoBehaviour
     void Awake()
     {
         if (current == null)
-            PointsManager.current = this;
+            current = this;
     }
 
     private void Update()
@@ -42,7 +42,7 @@ public class PointsManager : MonoBehaviour
         return PointsManager.current.comboMultiplier++;
     }
 
-    public static void ResetComboMultiplier()
+    public void ResetComboMultiplier()
     {
         PointsManager.current.comboMultiplier = 1;
     }
