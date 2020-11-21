@@ -3148,6 +3148,76 @@ BoxCollider2D:
     type: 3}
   m_PrefabInstance: {fileID: 1811730438}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &729302822
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 729302823}
+  - component: {fileID: 729302825}
+  - component: {fileID: 729302824}
+  m_Layer: 0
+  m_Name: AgroAvisoDog1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &729302823
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729302822}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 21.872532, y: -4.9195056, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 992916227}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &729302824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729302822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a4142afc5bc1254c9328cff8dbfbf18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &729302825
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729302822}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 4.9385357, y: -2.821268}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 33.43764, y: 17.718243}
+  m_EdgeRadius: 0
 --- !u!4 &739749917 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6360559420758580052, guid: 4f0c4800518a67b4d9bd2127baa4d1d8,
@@ -4340,6 +4410,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0756d87dd7ef4840a4ab2e47153618d, type: 3}
+--- !u!1 &992916226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 992916227}
+  m_Layer: 0
+  m_Name: Dog1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &992916227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992916226}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 729302823}
+  m_Father: {fileID: 1484708921}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &993751575
 GameObject:
   m_ObjectHideFlags: 0
@@ -4826,7 +4927,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062598117}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 32.59, y: -0.12, z: 0}
+  m_LocalPosition: {x: 33.26, y: -0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 286775193}
@@ -6546,6 +6647,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1420935431}
   - component: {fileID: 1420935432}
+  - component: {fileID: 1420935438}
+  - component: {fileID: 1420935437}
+  - component: {fileID: 1420935436}
+  - component: {fileID: 1420935435}
+  - component: {fileID: 1420935434}
+  - component: {fileID: 1420935433}
   m_Layer: 0
   m_Name: DogContainer
   m_TagString: Untagged
@@ -6584,6 +6691,103 @@ CircleCollider2D:
   m_Offset: {x: 0.15957165, y: -0.22895026}
   serializedVersion: 2
   m_Radius: 0.5416267
+--- !u!114 &1420935433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420935430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b1cdb6d1180954b99774af1c350203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1420935434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420935430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cec92c8f7efe4724a9309b2ae22f6785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chanceVal: 10
+--- !u!114 &1420935435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420935430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bdbf6b786ba50141a83cfcf663b3cca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetsOnFinalWaypoint: 0
+  waypoints: []
+  speedMov: 0
+  speedMultip: 1
+  currentWaypoint: {fileID: 0}
+  currentWaypointIndex: 0
+  controller: {fileID: 0}
+--- !u!114 &1420935436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420935430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea25a9424203694cb54ac9ea19bd4e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPatrolingParam: isPatroling
+  isIdleParam: isIdle
+  isBarkingParam: isBarking
+  waypointComponent: {fileID: 0}
+  idleComponent: {fileID: 0}
+  barkComponent: {fileID: 0}
+--- !u!95 &1420935437
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420935430}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5691582ad27118b4180bffb9d038ecec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &1420935438
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420935430}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.13640165, y: -0.22773886}
+  serializedVersion: 2
+  m_Radius: 2.0796332
 --- !u!4 &1423218092 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3289575420441714325, guid: a8d4ffa8dc9cd7c45bc0f76a4f522b39,
@@ -6777,6 +6981,7 @@ Transform:
   - {fileID: 1011310393}
   - {fileID: 1332124896}
   - {fileID: 286775193}
+  - {fileID: 992916227}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
