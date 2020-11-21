@@ -8,11 +8,13 @@ using Random = UnityEngine.Random;
 public class RandomStayInPlace : MonoBehaviour
 {
     public int chanceVal = 10; // 10%, a chequear
-    //public float timeStayInPlace = 5f;
+                               //public float timeStayInPlace = 5f;
 
     //[Header("Previsional animation params. (not working)")]
     //public Animator anim;
-    
+
+    EnemyControllerBB controller;
+    DogControllerBB controllerD;
 
     /// <summary>
     /// Utilizar en algun momento que sea interesante, como al llegar
@@ -33,8 +35,12 @@ public class RandomStayInPlace : MonoBehaviour
             //this.GetComponent<FetchAndAttack>().enabled = false;
             //this.GetComponent<WaypointPatrol>().enabled = false;
             Debug.Log("staying");
-            this.GetComponent<EnemyControllerBB>().SetCurrentState(EnemyState.idle);
-            
+            if (controller)
+                controller.SetCurrentState(EnemyState.idle);
+            else if (controllerD)
+                controllerD.SetCurrentState(DogState.idle);
+
+
             //StartCoroutine(RestartBehaviours());
         }
 

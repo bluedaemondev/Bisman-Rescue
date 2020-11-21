@@ -46,22 +46,46 @@ public class HealthScript : MonoBehaviour
         //{
         //    GetComponent<PlayerControllerBB>().SetCurrentState(PlayerState.damaged);
         //}
-        if(canGetKnocked)
+        if (canGetKnocked && currentLife > 0)
         {
             print("iasdhajsdhasd");
-            GetComponent<EnemyControllerBB>().SetCurrentState(EnemyState.knocked);
+
+            EnemyControllerBB tryEnemyA;
+            this.TryGetComponent<EnemyControllerBB>(out tryEnemyA);
+
+            //DogControllerBB tryEnemyB;
+            //this.TryGetComponent<DogControllerBB>(out tryEnemyB);
+
+            if (tryEnemyA)
+                tryEnemyA.SetCurrentState(EnemyState.knocked);
+
+            //else if (tryEnemyB)
+            //    tryEnemyB.SetCurrentState(DogState.knocked);
+            //GetComponent<EnemyControllerBB>().SetCurrentState(EnemyState.knocked);
         }
 
-        if (currentLife <= 0)
+        else
         {
             died = true;
+            canGetKnocked = false;
+
             if (isPlayer)
             {
                 GetComponent<PlayerControllerBB>().SetCurrentState(PlayerState.dead);
             }
             else
             {
-                GetComponent<EnemyControllerBB>().SetCurrentState(EnemyState.dead);
+
+                EnemyControllerBB tryEnemyA;
+                this.TryGetComponent<EnemyControllerBB>(out tryEnemyA);
+                DogControllerBB tryEnemyB;
+                this.TryGetComponent<DogControllerBB>(out tryEnemyB);
+
+                if (tryEnemyA)
+                    tryEnemyA.SetCurrentState(EnemyState.dead);
+                else if(tryEnemyB)
+                    tryEnemyB.SetCurrentState(DogState.dead);
+
             }
         }
 

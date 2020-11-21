@@ -15,19 +15,23 @@ public class WaypointPatrol : MonoBehaviour
     public int currentWaypointIndex;
 
     public EnemyControllerBB controller;
-
+    public DogControllerBB controllerD;
 
     // Start is called before the first frame update
     void Start()
     {
-        controller = GetComponent<EnemyControllerBB>();
+
+        TryGetComponent(out controller);
+        TryGetComponent(out controllerD);
+
         // tp al primer punto
         transform.position = waypoints[0].position;
-        
+
         // establezco el proximo si se mueve
-        if(waypoints.Count > 1) { 
-        currentWaypoint = waypoints[1];
-        currentWaypointIndex = 1;
+        if (waypoints.Count > 1)
+        {
+            currentWaypoint = waypoints[1];
+            currentWaypointIndex = 1;
         }
         else
         {
@@ -46,6 +50,21 @@ public class WaypointPatrol : MonoBehaviour
         // translation
         var movVector = Vector2.MoveTowards(transform.position, currentWaypoint.position, speedMov * speedMultip * Time.deltaTime);
         //transform.position = movVector;
+
+
+        var lScale = transform.localScale;
+        // pos siguiente a la derecha, flip sprite
+        if (movVector.x > transform.position.x && lScale.x > 0)
+        {
+           
+            lScale.x = -lScale.x;
+        }
+        else if(movVector.x < transform.position.x && lScale.x < 0  )
+        {
+            lScale.x = Mathf.Abs(lScale.x);
+        }
+
+        transform.localScale = lScale;
 
         GetComponent<Rigidbody2D>().MovePosition(movVector);
         //resetea si llego al final de la lista
@@ -86,7 +105,11 @@ public class WaypointPatrol : MonoBehaviour
             //    GetComponent<EnemyController>().PlaySound("idle");
             //}
 
-            controller.idleComponent.StaysInPlace(); // chance aleatoria
+            if (controller)
+                controller.idleComponent.StaysInPlace(); // chance aleatoria
+            else if(controllerD)
+                controllerD.idleComponent.StaysInPlace(); // chance aleatoria
+
 
             //print("stay? " + r_result);
         }

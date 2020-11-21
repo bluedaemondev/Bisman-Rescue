@@ -6,6 +6,7 @@ TagManager:
   tags:
   - gun
   - door
+  - bringer
   layers:
   - Default
   - TransparentFX

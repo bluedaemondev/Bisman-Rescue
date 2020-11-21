@@ -7,7 +7,7 @@ public class BringOtherEnemiesOnTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,7 +19,11 @@ public class BringOtherEnemiesOnTrigger : MonoBehaviour
 
             if (en)
             {
-                en.SetCurrentState(EnemyState.pursuiting);
+                if (!en.isDead && !en.isKnocked)
+                {
+                    en.SetCurrentState(EnemyState.pursuiting);
+                    en.pursuitComponent.SetFollowTarget(this.transform.position);
+            }
             }
 
         }

@@ -13,7 +13,8 @@ public enum EnemyState
     dead
 }
 
-[RequireComponent(typeof(WaypointPatrol),typeof(FollowingTarget))] // typeof(MeleeAttack), typeof(RandomStayInPlace)
+[RequireComponent(typeof(WaypointPatrol), typeof(FollowingTarget))]
+//  +++++++ (agregar por editor) typeof(MeleeAttack), typeof(RandomStayInPlace)
 public class EnemyControllerBB : MonoBehaviour
 {
     private Animator animator;
@@ -93,8 +94,14 @@ public class EnemyControllerBB : MonoBehaviour
                 isPursuing = false;
                 isMeleeAttacking = false;
                 isShooting = false;
-                isKnocked = true;
-                animator.Play("knocked");
+                
+                if (!isKnocked)
+                {
+                    isKnocked = true;
+                    animator.SetBool(isKnockedParam, isKnocked);
+                    //animator.Play("knocked");
+                }
+
                 //waypointComponent.SetSpeedMultiplier(pursuitComponent.speedMultipier);
                 break;
             case EnemyState.melee_attacking:
@@ -123,7 +130,7 @@ public class EnemyControllerBB : MonoBehaviour
         animator.SetBool(isShootingParam, isShooting);
         animator.SetBool(isMeleeAttackingParam, isMeleeAttacking);
 
-        animator.SetBool(isKnockedParam, isKnocked);
+        //animator.SetBool(isKnockedParam, isKnocked);
 
         animator.SetBool(isIdleParam, isIdle);
 
