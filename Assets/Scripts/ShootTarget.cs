@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Enemy IA attack behaviours script
+/// </summary>
 public class ShootTarget : MonoBehaviour
 {
     //public GunScript equipedGun;
-    SpriteRenderer gunHolder;
+    public SpriteRenderer gunHolder;
     public float gunCooldown = 0.25f;
     public float currentCooldown;
     public GameObject gunpoint;
-    public GunScript gunScript;
+    public PersistentGunStats gunScript;
     public float distanceShootEnabled = 9f;
     public AudioSource sfxPlayer;
 
@@ -21,8 +24,9 @@ public class ShootTarget : MonoBehaviour
     void Start()
     {
         this.sfxPlayer = this.GetComponentInChildren<AudioSource>();
-        this.gunScript = this.GetComponentInChildren<GunScript>();
-        this.gunHolder = this.gunScript.GetComponent<SpriteRenderer>();
+        //this.gunScript = this.GetComponentInChildren<PersistentGunStats>();
+        this.gunScript = this.GetComponent<PersistentGunStats>();
+        //this.gunHolder = this.gunScript.GetComponent<SpriteRenderer>();
 
         GameManagerActions.current.defeatEvent.AddListener(this.DisableComponent);
     }
@@ -35,7 +39,7 @@ public class ShootTarget : MonoBehaviour
     private IEnumerator DelayShoot(Vector3 target)
     {
         canShoot = false;
-        yield return new WaitForSeconds(gunCooldown);
+        yield return new WaitForSeconds(this.gunScript.cooldownMax);
         // meto un delay igual para que no sea en un instante y haya chance de dodgear
         ShootBullet(target);
         canShoot = true;
@@ -51,6 +55,7 @@ public class ShootTarget : MonoBehaviour
         {
             var hitObstacle = Physics2D.Raycast(transform.position, playerPos, distanceShootEnabled, GameInfo.OBSTACLE_LAYER);
             var hitPlayerPoint = Physics2D.Raycast(transform.position, playerPos, distanceShootEnabled, GameInfo.PLAYER_LAYER);
+            
             var d_to_player = Vector2.Distance(playerPos, this.transform.position);
             //distancia habilitada + no hay obstaculos en el medio
 
@@ -86,8 +91,11 @@ public class ShootTarget : MonoBehaviour
 
     void ShootBullet(Vector3 targetPos)
     {
-        if (gunScript && gunScript.currAmmo - 1 >= 0) // no dispara si no tiene balas
+        int currAmmo = gunScript.ShootClip(true);
+
+        if (currAmmo >= 0 && gunScript.currentGunStats.shootSfx)
         {
+            this.sfxPlayer.PlayOneShot(gunScript.currentGunStats.shootSfx);
             var bullet_go = Instantiate(bulletPrefab, gunpoint.transform.position, Quaternion.identity);
             var bullet = bullet_go.GetComponent<Bullet>();
 
@@ -98,26 +106,29 @@ public class ShootTarget : MonoBehaviour
 
             print("bullet heading " + directionVector);
             this.currentCooldown = gunCooldown; //reset cooldown
-            this.gunScript.currAmmo--;
-            this.sfxPlayer.PlayOneShot(gunScript.sfxGun);
 
+            this.gunScript.ShootClip(false);
         }
-        else
+        else if (gunScript.noClipSfx)
         {
-
             print("out of bullets " + this.name);
             //cambio de rutina al no tener balas
             this.gameObject.GetComponent<FetchAndAttack>().enabled = true;
 
             AlteredState a_state;
-            TryGetComponent<AlteredState>(out a_state);
+            TryGetComponent(out a_state);
 
+            this.sfxPlayer.PlayOneShot(gunScript.noClipSfx);
+            this.gunScript.SetToMelee();
             gunHolder.sprite = null;
-            this.sfxPlayer.PlayOneShot(gunScript.sfxNoClip);
 
-            Destroy(this.gunScript.gameObject);
+            if (a_state)
+            {
+                a_state.enabled = true;
+            }
 
             this.enabled = false;
+
         }
 
     }

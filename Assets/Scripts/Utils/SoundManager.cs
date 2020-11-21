@@ -18,13 +18,19 @@ public class SoundManager : MonoBehaviour
     void Awake()
     {
         if(instance == null)
-        {
             instance = this;
-        }
 
         sources = this.GetComponents<AudioSource>();
     }
 
+    public void PlayMusic(AudioClip clip)
+    {
+        this.sources[0].PlayOneShot(clip);
+    }
+    public void PlayAmbient(AudioClip clip)
+    {
+        this.sources[1].PlayOneShot(clip);
+    }
     public void PlayEffect(AudioClip clip)
     {
         this.sources[2].PlayOneShot(clip);

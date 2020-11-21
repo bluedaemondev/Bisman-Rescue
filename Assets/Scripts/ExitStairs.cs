@@ -5,17 +5,21 @@ using UnityEngine;
 
 public class ExitStairs : MonoBehaviour
 {
-    public static List<EnemyController> enemiesOnFloor= new List<EnemyController>();
-
+    //public static List<EnemyController> enemiesOnFloor= new List<EnemyController>();
+    public static List<EnemyControllerBB> enemiesOnFloor = new List<EnemyControllerBB>();
     private void Awake()
     {
-        enemiesOnFloor = new List<EnemyController>();
+        //enemiesOnFloor = new List<EnemyController>();
+        enemiesOnFloor = new List<EnemyControllerBB>();
         //GameManagerActions.current.defeatEvent.AddListener(ResetConditions);
         //GameManagerActions.current.winEvent.AddListener(ResetConditions);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.layer != GameInfo.PLAYER_LAYER)
+            return;
+
         if (!enemiesOnFloor.Any())
         {
             //condicion de subir de nivel = matar a todos los enemigos

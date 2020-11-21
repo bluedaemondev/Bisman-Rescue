@@ -16,6 +16,21 @@ public class GameInfo :MonoBehaviour
     public static int BULLET_LAYER = 13;
 
     public Transform particlesContainer;
+    public Transform corpsesContainer;
+    public Transform guiContainer;
+
+    //public List<UnlockCard> cardsOnInventory;
+
+    //public void AddCard(UnlockCard uc0)
+    //{
+    //    if (cardsOnInventory == null)
+    //        cardsOnInventory = new List<UnlockCard>();
+
+    //    if (!cardsOnInventory.Contains(uc0))
+    //    {
+    //        cardsOnInventory.Add(uc0);
+    //    }
+    //}
 
     private void Awake()
     {

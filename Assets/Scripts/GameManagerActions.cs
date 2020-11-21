@@ -14,14 +14,25 @@ public class GameManagerActions : MonoBehaviour
     public UnityEvent defeatEvent;
     public UnityEvent winEvent;
 
+    public Sprite handgunSprite;
+    public AudioClip sfxGun;
+    public AudioClip sfxNoClip;
+
     private void Awake()
     {
         GameManagerActions.current = this;
 
         if (defeatEvent == null)
             defeatEvent = new UnityEvent();
-        if (winEvent== null)
+        if (winEvent == null)
             winEvent = new UnityEvent();
+
+        var guns = GameObject.FindObjectsOfType<PickupGunScript>();
+        
+        foreach (var gun in guns)
+        {
+            gun.gunRefference = new Gun(GunType.Handgun22, 0.2f, 9, "handgun", handgunSprite, sfxGun, sfxNoClip);
+        }
 
     }
 

@@ -5,11 +5,16 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using Text = TMPro.TextMeshProUGUI;
 
-
+public enum EnumPuerta
+{
+    Azul,
+    Verde,
+    Naranja
+}
 public class HudController : MonoBehaviour
 {
     // singleton para poder acceder desde los otros scripts
-    public static HudController current;
+    public static HudController current { get; private set; }
 
     public Text roundsText;
     public Text pointsText;
@@ -17,10 +22,22 @@ public class HudController : MonoBehaviour
 
     public GameObject defeatPanelPrefab;
 
+    [Header("Tarjetas para desbloquear areas")]
+    public GameObject cardAzul;
+    public GameObject cardVerde;
+    public GameObject cardNaranja;
+
+
     private void Awake()
     {
         if (current == null)
-            HudController.current = this;
+            current = this;
+        
+        cardAzul.SetActive(false);
+        cardVerde.SetActive(false);
+        cardNaranja.SetActive(false);
+
+
     }
     private void Start()
     {
@@ -47,6 +64,22 @@ public class HudController : MonoBehaviour
     public void SetMissionUI(string newMission)
     {
         this.missionText.text = newMission;
+    }
+
+    public void AddCardToUI(EnumPuerta val)
+    {
+        switch (val) {
+            case EnumPuerta.Azul:
+                cardAzul.SetActive(true);
+                break;
+            case EnumPuerta.Verde:
+                cardVerde.SetActive(true);
+                break;
+            case EnumPuerta.Naranja:
+                cardNaranja.SetActive(true);
+                break;
+        }
+
     }
 
 }
