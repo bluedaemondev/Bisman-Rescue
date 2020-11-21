@@ -19,6 +19,8 @@ public class Gun
     public GunType type { get; set; }
     public Sprite gunSprite { get; set; }
     public AudioClip shootSfx { get; set; }
+    public AudioClip noclipSfx { get; set; }
+
 
     public Gun()
     {
@@ -33,9 +35,10 @@ public class Gun
 
         gunSprite = null;
         shootSfx = null;
+        noclipSfx = null;
     }
 
-    public Gun(GunType type, float cdMax, int ammoMax, string name, Sprite sprite, AudioClip shootSfx)
+    public Gun(GunType type, float cdMax, int ammoMax, string name, Sprite sprite, AudioClip shootSfx, AudioClip noclip)
     {
         cooldownMax = cdMax;
         cooldownCurrent = 0;
@@ -44,6 +47,7 @@ public class Gun
         this.name = name;
         gunSprite = sprite;
         this.shootSfx = shootSfx;
+        this.noclipSfx = noclip;
 
         this.type = type;
     }

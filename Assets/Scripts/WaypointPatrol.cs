@@ -8,14 +8,19 @@ public class WaypointPatrol : MonoBehaviour
     public bool resetsOnFinalWaypoint;
     public List<Transform> waypoints;
     public float speedMov;
+    public float speedMultip = 1;
+
 
     public Transform currentWaypoint;
     public int currentWaypointIndex;
+
+    public EnemyControllerBB controller;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        controller = GetComponent<EnemyControllerBB>();
         // tp al primer punto
         transform.position = waypoints[0].position;
         
@@ -33,13 +38,13 @@ public class WaypointPatrol : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void MoveCharacter()
     {
         //se fija si alcanzo el objetivo y avanza de punto
         MoveNextWaypoint();
 
         // translation
-        var movVector = Vector2.MoveTowards(transform.position, currentWaypoint.position, speedMov * Time.deltaTime);
+        var movVector = Vector2.MoveTowards(transform.position, currentWaypoint.position, speedMov * speedMultip * Time.deltaTime);
         //transform.position = movVector;
 
         GetComponent<Rigidbody2D>().MovePosition(movVector);
@@ -58,6 +63,11 @@ public class WaypointPatrol : MonoBehaviour
         }
     }
 
+    public void SetSpeedMultiplier(float speedMultip)
+    {
+        this.speedMultip = speedMultip;
+    }
+
     void MoveNextWaypoint()
     {
         // avance al siguiente waypoint
@@ -68,13 +78,15 @@ public class WaypointPatrol : MonoBehaviour
                 currentWaypoint = waypoints[next];
 
             // dejo que calcule su proximo punto pero me fijo si se queda un toque en el lugar
-            RandomStayInPlace r_stay; 
-            this.TryGetComponent<RandomStayInPlace>(out r_stay);
-            
-            if (r_stay && r_stay.StaysInPlace())
-            {
-                GetComponent<EnemyController>().PlaySound("idle");
-            }
+
+            //this.TryGetComponent<RandomStayInPlace>(out r_stay);
+
+            //if (r_stay && r_stay.StaysInPlace())
+            //{
+            //    GetComponent<EnemyController>().PlaySound("idle");
+            //}
+
+            controller.idleComponent.StaysInPlace(); // chance aleatoria
 
             //print("stay? " + r_result);
         }

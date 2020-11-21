@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [Header("Componentes de objeto")]
     public SpriteRenderer sprRend;
     public Animator animator;
+    public GameObject guiPlayer;
 
     [Header("Prefabs usados")]
     public GameObject p_ParticlesShoot;
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
+        guiPlayer.SetActive(true);
         GameManagerActions.current.defeatEvent.AddListener(DisableComponent);
     }
     public void DisableComponent()

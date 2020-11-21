@@ -55,6 +55,7 @@ public class ShootTarget : MonoBehaviour
         {
             var hitObstacle = Physics2D.Raycast(transform.position, playerPos, distanceShootEnabled, GameInfo.OBSTACLE_LAYER);
             var hitPlayerPoint = Physics2D.Raycast(transform.position, playerPos, distanceShootEnabled, GameInfo.PLAYER_LAYER);
+            
             var d_to_player = Vector2.Distance(playerPos, this.transform.position);
             //distancia habilitada + no hay obstaculos en el medio
 

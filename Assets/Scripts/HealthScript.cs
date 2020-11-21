@@ -18,24 +18,20 @@ public class HealthScript : MonoBehaviour
     public int maxLife = 1;
     public float cameraShakeFactor = 5f;
 
+    public bool isPlayer = false;
 
     [Header("Opcional para jugador")]
     public GameObject deadScreenGO;
 
     public UnityEvent OnDeathEvent;
 
-    //magnitud hasta 18 tira el mouse
+    public AudioClip damagedSound;
+    public AudioClip deathSound;
 
-    // Start is called before the first frame update
-    //void Start()
-    //{
-    //    if (imgLife)
-    //        imgLife.color = colorLife;
-    //}
+
+
     public void ResetLife()
     {
-        //currentLifeAlpha = 0;
-        //imgLife.color = new Color(imgLife.color.r, imgLife.color.g, imgLife.color.b, currentLifeAlpha / 100);
         this.currentLife = maxLife;
 
     }
@@ -46,19 +42,42 @@ public class HealthScript : MonoBehaviour
         CamerasManager.instance.ShakeCameraNormal(cameraShakeFactor, .1f);
         this.currentLife -= damage;
 
+        //if (isPlayer)
+        //{
+        //    GetComponent<PlayerControllerBB>().SetCurrentState(PlayerState.damaged);
+        //}
+        if(canGetKnocked)
+        {
+            print("iasdhajsdhasd");
+            GetComponent<EnemyControllerBB>().SetCurrentState(EnemyState.knocked);
+        }
+
         if (currentLife <= 0)
         {
-            ////dead
-            ////imgLife.color = new Color(imgLife.color.r, imgLife.color.g, imgLife.color.b, 1);
-            //if (deadScreenGO != null)
-            //{
-            //    deadScreenGO.SetActive(true);
-            //}
             died = true;
+            if (isPlayer)
+            {
+                GetComponent<PlayerControllerBB>().SetCurrentState(PlayerState.dead);
+            }
+            else
+            {
+                GetComponent<EnemyControllerBB>().SetCurrentState(EnemyState.dead);
+            }
         }
+
+
 
         return died;
 
+    }
+
+    public void DamageSound()
+    {
+        SoundManager.instance.PlayEffect(damagedSound);
+    }
+    public void DeathSound()
+    {
+        SoundManager.instance.PlayEffect(damagedSound);
     }
 
     //void SetKnockedState()

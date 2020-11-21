@@ -42,7 +42,7 @@ public class CursorScript : MonoBehaviour
         if (playerCoords == null)
         {
             //playerCoords = GameObject.FindGameObjectWithTag("Player").transform;
-            playerCoords = GameObject.FindObjectOfType<PlayerController>().transform;
+            playerCoords = GameObject.FindObjectOfType<PlayerControllerBB>().transform;
             CameraFollow(playerCoords.transform);
         }
     }
@@ -75,7 +75,7 @@ public class CursorScript : MonoBehaviour
     void LateUpdate()
     {
         //
-        Debug.DrawRay(playerCoords.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), Color.red);
+        //Debug.DrawRay(playerCoords.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), Color.red);
 
         MoveCursor();
 

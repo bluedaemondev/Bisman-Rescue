@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
     public List<Sprite> sprites; // 0 normal , 1 en el piso
     public GameObject bloodCorpsePrefab;
 
-    AudioSource sfxEnemy;
+    //AudioSource sfxEnemy;
     [Header("Audio clips generales")]
     public AudioClip sfxDeath;
     public AudioClip sfxAttack;
@@ -33,12 +33,12 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         this.hScript = GetComponent<HealthScript>();
-        this.sfxEnemy = GetComponentInChildren<AudioSource>();
-        ExitStairs.enemiesOnFloor.Add(this);
+        //this.sfxEnemy = GetComponentInChildren<AudioSource>();
+        //ExitStairs.enemiesOnFloor.Add(this);
     }
     private void OnDestroy()
     {
-        ExitStairs.enemiesOnFloor.Remove(this);
+        //ExitStairs.enemiesOnFloor.Remove(this);
     }
 
     public void TakeDamage(DamageType type)
@@ -86,13 +86,13 @@ public class EnemyController : MonoBehaviour
         switch (v)
         {
             case "idle":
-                sfxEnemy.PlayOneShot(sfxIdle);
+                SoundManager.instance.PlayEffect(sfxIdle);
                 break;
             case "attack":
-                sfxEnemy.PlayOneShot(sfxAttack);
+                SoundManager.instance.PlayEffect(sfxAttack);
                 break;
             case "death":
-                sfxEnemy.PlayOneShot(sfxDeath);
+                SoundManager.instance.PlayEffect(sfxDeath);
                 break;
         }
     }

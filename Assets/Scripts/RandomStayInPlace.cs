@@ -8,12 +8,11 @@ using Random = UnityEngine.Random;
 public class RandomStayInPlace : MonoBehaviour
 {
     public int chanceVal = 10; // 10%, a chequear
-    public float timeStayInPlace = 5f;
+    //public float timeStayInPlace = 5f;
 
-    [Header("Previsional animation params. (not working)")]
-    public Animator anim;
-    public string stayInPlaceAnimatorParam = "staysStill";
-
+    //[Header("Previsional animation params. (not working)")]
+    //public Animator anim;
+    
 
     /// <summary>
     /// Utilizar en algun momento que sea interesante, como al llegar
@@ -32,8 +31,11 @@ public class RandomStayInPlace : MonoBehaviour
         {
             // quiero que deje de atacar si esta distraido?
             //this.GetComponent<FetchAndAttack>().enabled = false;
-            this.GetComponent<WaypointPatrol>().enabled = false;
-            StartCoroutine(RestartBehaviours());
+            //this.GetComponent<WaypointPatrol>().enabled = false;
+            Debug.Log("staying");
+            this.GetComponent<EnemyControllerBB>().SetCurrentState(EnemyState.idle);
+            
+            //StartCoroutine(RestartBehaviours());
         }
 
 
@@ -41,18 +43,19 @@ public class RandomStayInPlace : MonoBehaviour
 
     }
 
-    IEnumerator RestartBehaviours() // devolver patrullaje
-    {
-        //Debug.Log("restarting " + this.name + " in t=" + this.timeStayInPlace);
+    //IEnumerator RestartBehaviours() // devolver patrullaje
+    //{
+    //    //Debug.Log("restarting " + this.name + " in t=" + this.timeStayInPlace);
 
-        yield return new WaitForSeconds(timeStayInPlace);
-        this.GetComponent<WaypointPatrol>().enabled = true;
 
-        this.GetComponent<FetchAndAttack>().enabled = true;
-        this.GetComponent<FetchAndAttack>().colTrigger.enabled = true;
+    //    yield return new WaitForSeconds(timeStayInPlace);
+    //    //this.GetComponent<WaypointPatrol>().enabled = true;
 
-        Debug.Log("CR " + this.name + " DONE!, ENABLING PATROL");
+    //    //this.GetComponent<FetchAndAttack>().enabled = true;
+    //    //this.GetComponent<FetchAndAttack>().colTrigger.enabled = true;
 
-    }
+    //    Debug.Log("CR " + this.name + " DONE!, ENABLING PATROL");
+
+    //}
 
 }
