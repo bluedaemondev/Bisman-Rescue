@@ -19,10 +19,13 @@ public class DogControllerBB : MonoBehaviour
     public string isPatrolingParam = "isPatroling";
     public string isIdleParam = "isIdle";
     public string isBarkingParam = "isBarking";
+    public string isDeadParam = "isDeadTrigg";
 
     public bool isPatroling = false;
     public bool isBarking = false;
     public bool isIdle = false;
+    public bool isDead = false;
+
 
     public WaypointPatrol waypointComponent;
     public RandomStayInPlace idleComponent;
@@ -57,6 +60,10 @@ public class DogControllerBB : MonoBehaviour
                 isBarking = false;
                 isPatroling = true;
                 isIdle = false;
+                break;
+            case DogState.dead:
+                isDead = true;
+                animator.SetTrigger(isDeadParam);
                 break;
         }
 

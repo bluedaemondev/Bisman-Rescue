@@ -26,7 +26,7 @@ public class MeleeAttack : MonoBehaviour
     }
     private void Update()
     {
-        if (isPlayer && Input.GetMouseButtonDown(0))
+        if (isPlayer && Input.GetMouseButtonDown(0) && !controllerP.hasGun)
         {
             print("melee");
             controllerP.SetCurrentState(PlayerState.melee_attacking);

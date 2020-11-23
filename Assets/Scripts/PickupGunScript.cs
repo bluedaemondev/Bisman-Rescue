@@ -12,7 +12,7 @@ public class PickupGunScript : MonoBehaviour
     //public int maxAmmo = 9;
     //public float gunCooldown = 0.25f;
 
-    //public Sprite spr;
+    public Sprite spr;
     
     
     //public GameObject gunPrefab; // arma equipable
@@ -33,7 +33,7 @@ public class PickupGunScript : MonoBehaviour
     void Start()
     {
         //gunPrefab = this.gameObject;
-        //spr = this.GetComponent<SpriteRenderer>().sprite;
+        spr = this.GetComponent<SpriteRenderer>().sprite;
 
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -47,8 +47,13 @@ public class PickupGunScript : MonoBehaviour
             // y tambien el sprite 
 
             //collision.GetComponent<ShootFromPoint>().SetGun(cpyTest);
-            
-            collision.GetComponent<PersistentGunStats>().SetGunStats(gunRefference, true);
+
+            var gstat = collision.GetComponent<PersistentGunStats>();
+
+            gstat.gunSprite = spr;
+
+            gstat.SetGunStats(gunRefference, true);
+            gstat.hasFireGun = true;
 
             Destroy(this.gameObject);
         }

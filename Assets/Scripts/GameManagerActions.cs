@@ -31,7 +31,7 @@ public class GameManagerActions : MonoBehaviour
         
         foreach (var gun in guns)
         {
-            gun.gunRefference = new Gun(GunType.Handgun22, 0.2f, 9, "handgun", handgunSprite, sfxGun, sfxNoClip);
+            gun.LoadGun(new Gun(GunType.Handgun22, 0.2f, 9, "handgun", handgunSprite, sfxGun, sfxNoClip));
         }
 
     }

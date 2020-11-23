@@ -73,8 +73,8 @@ public class EnemyController : MonoBehaviour
         alterState = this.TryGetComponent<AlteredState>(out alterState) ?
                             alterState : this.gameObject.AddComponent<AlteredState>();
 
-        alterState.spriteAlter = this.sprites.Find(spr => spr.name.Contains("knocked"));
-        alterState.startSprite = this.sprites.Find(spr => spr != alterState.spriteAlter);
+        //alterState.spriteAlter = this.sprites.Find(spr => spr.name.Contains("knocked"));
+        //alterState.startSprite = this.sprites.Find(spr => spr != alterState.spriteAlter);
 
         // checkeo de integridad para que funcione el onEnable
         // estan medio acopladas las clases, pero lo dejo como solucion rapida.

@@ -87,17 +87,17 @@ public class ShootFromPoint : MonoBehaviour
 
         TurnGunpoint(mousePos);
 
-        // hit
-        if (Input.GetMouseButtonDown(0) && !gunScript)
-        {
-            MeleeAttack(mousePos);
-        }
+        //// hit
+        //if (Input.GetMouseButtonDown(0) && !gunScript)
+        //{
+        //    MeleeAttack(mousePos);
+        //}
 
         // shoot
         //print(currentCooldown >= gunCooldown && gunScript != null);
 
         if (Input.GetMouseButton(0) &&
-            gunScript &&
+            gunScript.hasFireGun &&
             currentCooldown >= gunCooldown)
         {
             ShootBullet(mousePos);
@@ -159,13 +159,13 @@ public class ShootFromPoint : MonoBehaviour
         int currAmmo = gunScript.ShootClip(true);
         //if (gunScript && gunScript.ammoCurrent - 1 >= 0) // no dispara si no tiene balas
         //{
-        if (currAmmo >= 0 && gunScript.currentGunStats.shootSfx)
-            //this.sfxPlayer.PlayOneShot(gunScript.currentGunStats.shootSfx);
-            SoundManager.instance.PlayEffect(gunScript.currentGunStats.shootSfx);
+        //if (currAmmo >= 0 && gunScript.currentGunStats.shootSfx)
+        //    //this.sfxPlayer.PlayOneShot(gunScript.currentGunStats.shootSfx);
+        //    SoundManager.instance.PlayEffect(gunScript.currentGunStats.shootSfx);
 
-        else if (gunScript.noClipSfx)
-            //this.sfxPlayer.PlayOneShot(gunScript.noClipSfx);
-            SoundManager.instance.PlayEffect(gunScript.noClipSfx);
+        //else if (gunScript.noClipSfx)
+        //    //this.sfxPlayer.PlayOneShot(gunScript.noClipSfx);
+        //    SoundManager.instance.PlayEffect(gunScript.noClipSfx);
 
         //bajo la municion
         //HudController.current.UpdateRoundsUI(gunScript.ammoCurrent, gunScript.ammoMax);

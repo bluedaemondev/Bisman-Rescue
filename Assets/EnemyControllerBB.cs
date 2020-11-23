@@ -60,6 +60,9 @@ public class EnemyControllerBB : MonoBehaviour
 
     public void SetCurrentState(EnemyState state)
     {
+        if (isDead)
+            return;
+
         this.currentState = state;
         switch (state)
         {
@@ -99,7 +102,7 @@ public class EnemyControllerBB : MonoBehaviour
                 {
                     isKnocked = true;
                     animator.SetBool(isKnockedParam, isKnocked);
-                    //animator.Play("knocked");
+                    animator.Play("knocked");
                 }
 
                 //waypointComponent.SetSpeedMultiplier(pursuitComponent.speedMultipier);

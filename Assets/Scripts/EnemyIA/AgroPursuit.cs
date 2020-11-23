@@ -5,20 +5,43 @@ using UnityEngine;
 public class AgroPursuit : MonoBehaviour
 {
     //public float speedMultip = 1.6f;
-    public EnemyControllerBB controller;
+    public List<EnemyControllerBB> controller;
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == GameInfo.PLAYER_LAYER)
+
+        if (collision.gameObject.layer == GameInfo.PLAYER_LAYER)
         {
-            controller.SetCurrentState(EnemyState.pursuiting);
+            foreach (var enemy in controller)
+            {
+                enemy.SetCurrentState(EnemyState.pursuiting);
+
+            }
+        }
+        else if (collision.gameObject.layer == GameInfo.ENEMY_LAYER)
+        {
+            EnemyControllerBB c;
+
+            //autocarga de agros 
+            TryGetComponent(out c);
+            if (c)
+            {
+                controller.Add(c);
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.layer == GameInfo.PLAYER_LAYER)
         {
-            controller.SetCurrentState(EnemyState.patroling);
+            foreach (var enemy in controller)
+            {
+                enemy.SetCurrentState(EnemyState.patroling);
+
+            }
+            //controller.SetCurrentState(EnemyState.patroling);
         }
     }
 }

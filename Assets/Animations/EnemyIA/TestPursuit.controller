@@ -208,7 +208,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1039747486710891193}
-    m_Position: {x: 240, y: 50, z: 0}
+    m_Position: {x: 240, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 618994915717249067}
     m_Position: {x: 240, y: 160, z: 0}
@@ -223,7 +223,7 @@ AnimatorStateMachine:
     m_Position: {x: 30, y: -180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -78402680835500704}
-    m_Position: {x: 240, y: -170, z: 0}
+    m_Position: {x: 250, y: -180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -764944325522210370}
     m_Position: {x: 510, y: 0, z: 0}
@@ -306,6 +306,7 @@ MonoBehaviour:
   prefabDead: {fileID: 3816526933116111699, guid: b6458acbc24250e4c86ea706af76b8bc,
     type: 3}
   prefabGUIDead: {fileID: 0}
+  controller: {fileID: 0}
   isPlayer: 0
 --- !u!1102 &-764944325522210370
 AnimatorState:
@@ -320,7 +321,9 @@ AnimatorState:
   m_Transitions:
   - {fileID: 897963323431195747}
   - {fileID: 2334060981689077605}
-  m_StateMachineBehaviours: []
+  - {fileID: 7133730536595970911}
+  m_StateMachineBehaviours:
+  - {fileID: 8543308521137244061}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -705,6 +708,31 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &7133730536595970911
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: isPursuing
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -4181377710414065276}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.91803277
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &8046342994915861131
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -730,6 +758,20 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &8543308521137244061
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e47084210be72499e1e7a24f1a5ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radioRemate: {fileID: 0}
+  health: {fileID: 0}
 --- !u!1102 &8660113244625882189
 AnimatorState:
   serializedVersion: 5

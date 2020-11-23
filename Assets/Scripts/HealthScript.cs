@@ -28,7 +28,17 @@ public class HealthScript : MonoBehaviour
     public AudioClip damagedSound;
     public AudioClip deathSound;
 
+    public EnemyControllerBB tryEnemyA;
+    public DogControllerBB tryEnemyB;
 
+    public AlteredState radioRemate;
+
+
+    private void Start()
+    {
+        this.TryGetComponent<EnemyControllerBB>(out tryEnemyA);
+        this.TryGetComponent<DogControllerBB>(out tryEnemyB);
+    }
 
     public void ResetLife()
     {
@@ -48,7 +58,7 @@ public class HealthScript : MonoBehaviour
         //}
         if (canGetKnocked && currentLife > 0)
         {
-            print("iasdhajsdhasd");
+            //print("iasdhajsdhasd");
 
             EnemyControllerBB tryEnemyA;
             this.TryGetComponent<EnemyControllerBB>(out tryEnemyA);
@@ -56,9 +66,10 @@ public class HealthScript : MonoBehaviour
             //DogControllerBB tryEnemyB;
             //this.TryGetComponent<DogControllerBB>(out tryEnemyB);
 
-            if (tryEnemyA)
+            if (tryEnemyA) { 
                 tryEnemyA.SetCurrentState(EnemyState.knocked);
-
+                radioRemate.gameObject.SetActive(true);
+            }
             //else if (tryEnemyB)
             //    tryEnemyB.SetCurrentState(DogState.knocked);
             //GetComponent<EnemyControllerBB>().SetCurrentState(EnemyState.knocked);
@@ -75,12 +86,6 @@ public class HealthScript : MonoBehaviour
             }
             else
             {
-
-                EnemyControllerBB tryEnemyA;
-                this.TryGetComponent<EnemyControllerBB>(out tryEnemyA);
-                DogControllerBB tryEnemyB;
-                this.TryGetComponent<DogControllerBB>(out tryEnemyB);
-
                 if (tryEnemyA)
                     tryEnemyA.SetCurrentState(EnemyState.dead);
                 else if(tryEnemyB)

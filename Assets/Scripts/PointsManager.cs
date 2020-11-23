@@ -24,7 +24,9 @@ public class PointsManager : MonoBehaviour
 
         if(currentTimeInCombo >= timeToResetComboMultiplier)
         {
-            ResetComboMultiplier();
+            //ResetComboMultiplier();
+            print("reset combo");
+            currentTimeInCombo = 0;
         }
     }
 

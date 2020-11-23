@@ -14,6 +14,8 @@ public class PersistentGunStats : MonoBehaviour
     public Sprite gunSprite;
     public AudioClip noClipSfx;
 
+    public PlayerControllerBB controller;
+
 
     public Gun currentGunStats { get; private set; }
 
@@ -23,16 +25,20 @@ public class PersistentGunStats : MonoBehaviour
         // para ataque melee, construyo por default
         if (!hasFireGun)
             SetToMelee();
+        
+        controller = this.GetComponent<PlayerControllerBB>();
+
     }
     public void SetToMelee()
     {
         var meleeAttack = new Gun();
 
-        this.SetGunStats(meleeAttack, false);
+        this.SetGunStats(meleeAttack, true);
         currentGunStats = meleeAttack;
 
         this.hasFireGun = false;
-        HudController.current.UpdateRoundsUI(0, 0);
+        controller.hasGun = false;
+        //HudController.current.UpdateRoundsUI(0, 0);
 
     }
     public void SetGunStats(Gun gun, bool updateUi)
@@ -40,6 +46,10 @@ public class PersistentGunStats : MonoBehaviour
         this.cooldownMax = gun.cooldownMax;
         this.cooldownCurrent = cooldownMax;
         this.gunSprite = gun.gunSprite;
+
+        this.ammoCurrent = gun.ammoCurrent;
+        this.ammoMax = gun.ammoMax;
+
 
         if (updateUi)
             HudController.current.UpdateRoundsUI(gun.ammoCurrent, gun.ammoMax);
@@ -51,14 +61,17 @@ public class PersistentGunStats : MonoBehaviour
         if (this.ammoCurrent - 1 >= 0 && hasFireGun)
         {
             this.ammoCurrent--;
-            
+
+            controller.SetCurrentState(PlayerState.shooting);
+
             if (updateUi)
                 HudController.current.UpdateRoundsUI(ammoCurrent, ammoMax);
         }
         else
         {
             this.ammoCurrent = 0;
-            
+            SetToMelee();
+
             if (updateUi)
                 HudController.current.UpdateRoundsUI(0, 0); // no bullet
         }

@@ -16,6 +16,13 @@ public class RandomStayInPlace : MonoBehaviour
     EnemyControllerBB controller;
     DogControllerBB controllerD;
 
+    private void Start()
+    {
+        this.TryGetComponent(out controller);
+        this.TryGetComponent(out controllerD);
+
+    }
+
     /// <summary>
     /// Utilizar en algun momento que sea interesante, como al llegar
     /// a un waypoint para que descanse y luego continue.
@@ -35,6 +42,7 @@ public class RandomStayInPlace : MonoBehaviour
             //this.GetComponent<FetchAndAttack>().enabled = false;
             //this.GetComponent<WaypointPatrol>().enabled = false;
             Debug.Log("staying");
+
             if (controller)
                 controller.SetCurrentState(EnemyState.idle);
             else if (controllerD)

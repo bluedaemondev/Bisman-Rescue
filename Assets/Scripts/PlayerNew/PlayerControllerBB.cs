@@ -49,6 +49,13 @@ public class PlayerControllerBB : MonoBehaviour
 
     public GameObject GuiPlayer;
 
+    public void DisableDead()
+    {
+        healthComponent.enabled = false;
+        movementComponent.enabled = false;
+        meleeAttackComponent.enabled = false;
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -98,6 +105,8 @@ public class PlayerControllerBB : MonoBehaviour
                 isIdle = false;
                 isMeleeAttacking = false;
                 isShooting = true;
+
+
                 break;
 
             case PlayerState.damaged:

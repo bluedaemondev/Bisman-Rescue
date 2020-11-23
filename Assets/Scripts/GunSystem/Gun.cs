@@ -42,8 +42,9 @@ public class Gun
     {
         cooldownMax = cdMax;
         cooldownCurrent = 0;
+
         this.ammoMax = ammoMax;
-        ammoCurrent = 0;
+        ammoCurrent = ammoMax;
         this.name = name;
         gunSprite = sprite;
         this.shootSfx = shootSfx;
