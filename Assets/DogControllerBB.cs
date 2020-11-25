@@ -39,7 +39,7 @@ public class DogControllerBB : MonoBehaviour
         this.animator = this.GetComponent<Animator>();
         this.SetCurrentState(DogState.patroling);
 
-        //ExitStairs.enemiesOnFloor.Add(this);
+        ExitStairs.dogsOnFloor.Add(this);
     }
 
     public void SetCurrentState(DogState state)

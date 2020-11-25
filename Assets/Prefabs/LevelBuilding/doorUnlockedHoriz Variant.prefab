@@ -7,15 +7,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4565600695725033240, guid: 88f2ec819bf08e842922f17ca3d83ff6,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4565600695725033241, guid: 88f2ec819bf08e842922f17ca3d83ff6,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 7.439746
+      value: -5.232785
       objectReference: {fileID: 0}
     - target: {fileID: 4565600695725033241, guid: 88f2ec819bf08e842922f17ca3d83ff6,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 1.0793176
+      value: 1.198823
       objectReference: {fileID: 0}
     - target: {fileID: 4565600696186505217, guid: 88f2ec819bf08e842922f17ca3d83ff6,
         type: 3}
@@ -75,7 +80,7 @@ PrefabInstance:
     - target: {fileID: 4565600696186505218, guid: 88f2ec819bf08e842922f17ca3d83ff6,
         type: 3}
       propertyPath: m_Name
-      value: doorUnlockedHoriz
+      value: doorUnlockedHoriz Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88f2ec819bf08e842922f17ca3d83ff6, type: 3}

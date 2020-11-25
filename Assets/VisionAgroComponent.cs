@@ -4,20 +4,48 @@ using UnityEngine;
 
 public class VisionAgroComponent : MonoBehaviour
 {
-    public DogControllerBB controller;
+    List<DogControllerBB> controller;
+
+    private void Awake()
+    {
+        if (controller == null)
+        {
+            controller = new List<DogControllerBB>();
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == GameInfo.PLAYER_LAYER)
         {
-            controller.SetCurrentState(DogState.barking);
+            foreach (var enemy in controller)
+            {
+                enemy.SetCurrentState(DogState.barking);
+
+            }
+        }
+        else if (collision.gameObject.layer == GameInfo.ENEMY_LAYER)
+        {
+
+            DogControllerBB c;
+
+            //autocarga de agros 
+            collision.gameObject.TryGetComponent(out c);
+            if (c)
+            {
+                controller.Add(c);
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.layer == GameInfo.PLAYER_LAYER)
         {
-            controller.SetCurrentState(DogState.patroling);
+            foreach (var enemy in controller)
+            {
+                enemy.SetCurrentState(DogState.patroling);
+
+            }
         }
     }
 }

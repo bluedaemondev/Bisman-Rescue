@@ -96,7 +96,7 @@ public class CursorScript : MonoBehaviour
     void MoveCursor()
     {
         var c_point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        c_point.z = 0;
+        c_point.z = -25;
         this.transform.position = c_point;
 
         transform.position = c_point;

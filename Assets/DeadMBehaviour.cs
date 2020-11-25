@@ -8,6 +8,8 @@ public class DeadMBehaviour : StateMachineBehaviour
     public GameObject prefabGUIDead;
 
     public EnemyControllerBB controller;
+    public DogControllerBB controllerD;
+
 
     public bool isPlayer;
 
@@ -25,9 +27,19 @@ public class DeadMBehaviour : StateMachineBehaviour
         else
         {
             animator.TryGetComponent(out controller);
-            controller.isDead = true;
+            animator.TryGetComponent(out controllerD);
 
-            ExitStairs.enemiesOnFloor.Remove(controller);
+            if (controller)
+            {
+                controller.isDead = true;
+                ExitStairs.enemiesOnFloor.Remove(controller);
+            }
+            else if (controllerD)
+            {
+                controllerD.isDead = true;
+                ExitStairs.dogsOnFloor.Remove(controllerD);
+            }
+
 
         }
 
@@ -44,7 +56,7 @@ public class DeadMBehaviour : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-        
+
 
 
     //}
