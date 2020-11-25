@@ -7,6 +7,7 @@ TagManager:
   - gun
   - door
   - bringer
+  - explodes
   layers:
   - Default
   - TransparentFX

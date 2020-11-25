@@ -23,9 +23,22 @@ public class ExplodesOnHit : MonoBehaviour
             print("exploded!");
 
             var touches = Physics2D.CircleCastAll(transform.position, radiusExplosion,Vector2.zero);
+            
             foreach(var item in touches)
             {
                 Debug.Log("item in explosion "+item.collider.name);
+                if (item.collider.CompareTag(GameInfo.instance.explodableTag))
+                {
+                    Destroy(item.collider.gameObject);
+                }
+                else if(item.collider.gameObject.layer == GameInfo.PLAYER_LAYER)
+                {
+                    item.collider.GetComponent<PlayerControllerBB>().SetCurrentState(PlayerState.damaged);
+                }
+                else if (item.collider.gameObject.layer == GameInfo.ENEMY_LAYER)
+                {
+                    item.collider.GetComponent<EnemyControllerBB>().SetCurrentState(EnemyState.dead);
+                }
             }
 
             animObject.SetTrigger("exploded");

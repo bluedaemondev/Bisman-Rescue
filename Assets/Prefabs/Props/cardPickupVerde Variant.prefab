@@ -10,14 +10,18 @@ PrefabInstance:
     - target: {fileID: -5794763919004543896, guid: d59e76a22d15377429a4b91307888046,
         type: 3}
       propertyPath: idDoorLinked
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 470809600731568893, guid: d59e76a22d15377429a4b91307888046,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 3968932684416479864, guid: a9ab656da57ec044fbfd5e70b9716a91,
+      propertyPath: m_Color.r
+      value: 0.39215684
+      objectReference: {fileID: 0}
+    - target: {fileID: 470809600731568893, guid: d59e76a22d15377429a4b91307888046,
         type: 3}
+      propertyPath: m_Color.b
+      value: 0.5487119
+      objectReference: {fileID: 0}
     - target: {fileID: 682611431357942598, guid: d59e76a22d15377429a4b91307888046,
         type: 3}
       propertyPath: m_Name

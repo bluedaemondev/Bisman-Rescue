@@ -1,0 +1,355 @@
+fileFormatVersion: 2
+guid: 00250fa62885b2a479eb36cd60c45c4d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2971080059447887971
+    second: Tileset Parcial II B - Juan Ignacio Lanosa_0
+  - first:
+      213: -3278566032915061120
+    second: Tileset Parcial II B - Juan Ignacio Lanosa_1
+  - first:
+      213: 8099906121260202440
+    second: Tileset Parcial II B - Juan Ignacio Lanosa_2
+  - first:
+      213: -8252424220947434902
+    second: Tileset Parcial II B - Juan Ignacio Lanosa_3
+  - first:
+      213: 4966489693262371343
+    second: Tileset Parcial II B - Juan Ignacio Lanosa_4
+  - first:
+      213: 5552996229283555718
+    second: Tileset Parcial II B - Juan Ignacio Lanosa_5
+  - first:
+      213: -3842332415230446307
+    second: Tileset Parcial II B - Juan Ignacio Lanosa_6
+  - first:
+      213: 6518535313232488971
+    second: Tileset Parcial II B - Juan Ignacio Lanosa_7
+  - first:
+      213: -7405277197334527193
+    second: Tileset Parcial II B - Juan Ignacio Lanosa_8
+  - first:
+      213: -246116614301169276
+    second: Tileset Parcial II B - Juan Ignacio Lanosa_9
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tileset Parcial II B - Juan Ignacio Lanosa_0
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 651
+        width: 79
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38e0f32bf6485e842abb33027a0eb94d
+      internalID: -2971080059447887971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Parcial II B - Juan Ignacio Lanosa_1
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 653
+        width: 76
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 970abd8798be5da44965b0af87e027d5
+      internalID: -3278566032915061120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Parcial II B - Juan Ignacio Lanosa_2
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 522
+        width: 37
+        height: 326
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 966932a4dc29ff346a619811574b1828
+      internalID: 8099906121260202440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Parcial II B - Juan Ignacio Lanosa_3
+      rect:
+        serializedVersion: 2
+        x: 1746
+        y: 757
+        width: 105
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5974de7047a1c584b8ff00c02d8a7b07
+      internalID: -8252424220947434902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Parcial II B - Juan Ignacio Lanosa_4
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 734
+        width: 177
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 416c25f8665ffb943a580ce118f826b1
+      internalID: 4966489693262371343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Parcial II B - Juan Ignacio Lanosa_5
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 878
+        width: 100
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25fc3e8140db5e849a9fa2720e354f69
+      internalID: 5552996229283555718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Parcial II B - Juan Ignacio Lanosa_6
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 985
+        width: 138
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20735637518eb6447a3d38e130644d3d
+      internalID: -3842332415230446307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Parcial II B - Juan Ignacio Lanosa_7
+      rect:
+        serializedVersion: 2
+        x: 1552
+        y: 367
+        width: 172
+        height: 353
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ade4189d7c8dfe4789d99ea8b380987
+      internalID: 6518535313232488971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Parcial II B - Juan Ignacio Lanosa_8
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 342
+        width: 172
+        height: 353
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e22b9d4cf4a2f9c419d6e03bd3fb54fc
+      internalID: -7405277197334527193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Parcial II B - Juan Ignacio Lanosa_9
+      rect:
+        serializedVersion: 2
+        x: 1264
+        y: 715
+        width: 125
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef2b8504b87b6194092e0cebb039fb1e
+      internalID: -246116614301169276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

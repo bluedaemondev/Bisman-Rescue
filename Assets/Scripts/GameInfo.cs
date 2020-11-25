@@ -15,6 +15,8 @@ public class GameInfo :MonoBehaviour
     
     public static int BULLET_LAYER = 13;
 
+    public string explodableTag = "explodes";
+
     public Transform particlesContainer;
     public Transform corpsesContainer;
     public Transform guiContainer;

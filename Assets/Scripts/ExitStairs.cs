@@ -7,6 +7,10 @@ public class ExitStairs : MonoBehaviour
 {
     //public static List<EnemyController> enemiesOnFloor= new List<EnemyController>();
     public static List<EnemyControllerBB> enemiesOnFloor = new List<EnemyControllerBB>();
+
+    public AudioClip clipRebote;
+
+    
     private void Awake()
     {
         //enemiesOnFloor = new List<EnemyController>();
@@ -28,6 +32,8 @@ public class ExitStairs : MonoBehaviour
         }
         else
         {
+            SoundManager.instance.PlayEffect(clipRebote);
+            CamerasManager.instance.ShakeCameraNormal(3, 0.6f);
             print(enemiesOnFloor.Count + " enemies left, kill\'em all!");
         }
     }

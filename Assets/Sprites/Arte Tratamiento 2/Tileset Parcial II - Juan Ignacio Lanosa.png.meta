@@ -130,7 +130,7 @@ TextureImporter:
     second: Tileset Parcial II - Juan Ignacio Lanosa_31
   - first:
       213: -2667070107676287739
-    second: Tileset Parcial II - Juan Ignacio Lanosa_32
+    second: psio pintas
   - first:
       213: -286870535420335825
     second: Tileset Parcial II - Juan Ignacio Lanosa_33
@@ -2520,6 +2520,27 @@ TextureImporter:
       bones: []
       spriteID: decb56c69bf19704693b13de980b2b6e
       internalID: 2248779928185973074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: psio pintas
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 708
+        width: 51
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f8a21d2343d4c04cac3e7b676b75723
+      internalID: -2667070107676287739
       vertices: []
       indices: 
       edges: []
