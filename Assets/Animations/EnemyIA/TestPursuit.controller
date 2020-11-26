@@ -208,7 +208,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1039747486710891193}
-    m_Position: {x: 240, y: 60, z: 0}
+    m_Position: {x: 230, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 618994915717249067}
     m_Position: {x: 240, y: 160, z: 0}
@@ -217,13 +217,13 @@ AnimatorStateMachine:
     m_Position: {x: 490, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1560887754524613424}
-    m_Position: {x: 510, y: -80, z: 0}
+    m_Position: {x: 470, y: -110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8660113244625882189}
-    m_Position: {x: 30, y: -180, z: 0}
+    m_Position: {x: 0, y: -230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -78402680835500704}
-    m_Position: {x: 250, y: -180, z: 0}
+    m_Position: {x: 220, y: -230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -764944325522210370}
     m_Position: {x: 510, y: 0, z: 0}
@@ -238,7 +238,7 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -30, y: 10, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
-  m_ExitPosition: {x: 510, y: -170, z: 0}
+  m_ExitPosition: {x: 440, y: -210, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1039747486710891193}
 --- !u!114 &-3901192445888152128
@@ -307,6 +307,7 @@ MonoBehaviour:
     type: 3}
   prefabGUIDead: {fileID: 0}
   controller: {fileID: 0}
+  controllerD: {fileID: 0}
   isPlayer: 0
 --- !u!1102 &-764944325522210370
 AnimatorState:

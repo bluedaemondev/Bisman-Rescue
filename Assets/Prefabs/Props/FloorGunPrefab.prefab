@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7825395888796052152
+--- !u!1 &504373012188483761
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7825395888796052156}
-  - component: {fileID: 7825395888796052157}
-  - component: {fileID: 7825395888796052154}
-  - component: {fileID: 7825395888796052155}
-  - component: {fileID: 7871987091080419210}
+  - component: {fileID: 5199288461873151680}
+  - component: {fileID: 9050579362794860099}
   m_Layer: 0
-  m_Name: FloorGunPrefab
+  m_Name: SpriteAsset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7825395888796052156
+--- !u!4 &5199288461873151680
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7825395888796052152}
+  m_GameObject: {fileID: 504373012188483761}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.796673, y: -0.044704888, z: 0}
-  m_LocalScale: {x: 0.28889, y: 0.28889, z: 0.28889}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 7825395888796052156}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7825395888796052157
+--- !u!212 &9050579362794860099
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7825395888796052152}
+  m_GameObject: {fileID: 504373012188483761}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -71,7 +68,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 8d8f441b801a9e7478668276dcd72cc2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -83,6 +80,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &7825395888796052152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7825395888796052156}
+  - component: {fileID: 7825395888796052154}
+  - component: {fileID: 7825395888796052155}
+  - component: {fileID: 7871987091080419210}
+  - component: {fileID: 1728083003725023254}
+  m_Layer: 0
+  m_Name: FloorGunPrefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7825395888796052156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7825395888796052152}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.796673, y: -0.044704888, z: 0}
+  m_LocalScale: {x: 0.28889, y: 0.28889, z: 0.28889}
+  m_Children:
+  - {fileID: 5199288461873151680}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7825395888796052154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,12 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc48225c62a2ccc41aa92619b3d2aadc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupKey: 101
-  currAmmo: 9
-  maxAmmo: 9
-  gunCooldown: 0.25
-  gunPrefab: {fileID: 0}
   spr: {fileID: 0}
+  pickupKey: 101
   sfxGun: {fileID: 8300000, guid: 79d948a8217fb7e4291a1aea4cb97495, type: 3}
   sfxNoClip: {fileID: 8300000, guid: 9bc404c25f78e714899c883ac6862374, type: 3}
 --- !u!58 &7825395888796052155
@@ -140,3 +168,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &1728083003725023254
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7825395888796052152}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 96fb918ad2a6f1a46afac9d515de9fc3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

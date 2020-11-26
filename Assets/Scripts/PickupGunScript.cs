@@ -33,7 +33,7 @@ public class PickupGunScript : MonoBehaviour
     void Start()
     {
         //gunPrefab = this.gameObject;
-        spr = this.GetComponent<SpriteRenderer>().sprite;
+        spr = this.GetComponentInChildren<SpriteRenderer>().sprite;
 
     }
     private void OnTriggerStay2D(Collider2D collision)
