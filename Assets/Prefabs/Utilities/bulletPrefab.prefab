@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7034a62b7c433034e9e3381bf0008781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedShot: 3
+  speedShot: 5.37
   diesInCollision: 0
   damage: 1
   forceToAppend: {x: 0, y: 0}

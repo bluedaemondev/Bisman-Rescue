@@ -22,7 +22,12 @@ public class GeneralGameplay : MonoBehaviour
     }
     public void MoveWinScene()
     {
-        SceneManager.LoadScene("floor2");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene("floor2");
+    }
+
+    public void BackToMenu() { 
+        SceneManager.LoadScene(0);
     }
 
     public IEnumerator<bool> TimerProto(float timeMax)

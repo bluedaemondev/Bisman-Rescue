@@ -48,7 +48,7 @@ public class ShootTarget : MonoBehaviour
 
     private void Update()
     {
-        var playerPos = GameObject.FindObjectOfType<PlayerController>().transform.position;
+        var playerPos = GameObject.FindObjectOfType<PlayerControllerBB>().transform.position;
 
         if (this.currentCooldown <= 0 && canShoot)
 
