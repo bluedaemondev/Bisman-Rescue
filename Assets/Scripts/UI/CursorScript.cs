@@ -32,7 +32,7 @@ public class CursorScript : MonoBehaviour
             this.animator = GetComponent<Animator>();
         }
 
-        Cursor.visible = false;
+        Cursor.SetCursor(cursorSpriteAim.texture, Vector2.zero, CursorMode.ForceSoftware);
     }
 
     private void Start()
