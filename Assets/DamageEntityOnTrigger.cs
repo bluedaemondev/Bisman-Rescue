@@ -18,6 +18,8 @@ public class DamageEntityOnTrigger : MonoBehaviour
                 collision.GetComponent<HealthScript>().GetDamage(1);
             else if (collision.GetComponent<DogControllerBB>() != null)
                 collision.GetComponent<HealthScript>().GetDamage(1);
+            else if (collision.GetComponent<BossControllerBB>() != null)
+                collision.GetComponent<HealthScript>().GetDamage(1);
 
         }
     }

@@ -2,45 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PatrolMBehaviour : StateMachineBehaviour
+public class WalkMBehaviour : StateMachineBehaviour
 {
-    EnemyControllerBB controller;
-    DogControllerBB controllerD;
-    BossControllerBB controllerB;
-
+    public BossControllerBB controller;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.TryGetComponent(out controller);
-        animator.TryGetComponent(out controllerD);
-        animator.TryGetComponent(out controllerB);
-        //controller = animator.GetComponent<EnemyControllerBB>();
+        controller = animator.GetComponent<BossControllerBB>();
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (controller)
-            controller.waypointComponent.MoveCharacter();
-        else if (controllerD)
-            controllerD.waypointComponent.MoveCharacter();
-        else if (controllerB)
-        {
-            controllerB.GetComponent<WaypointPatrol>().MoveCharacter();
-            var scale = controllerB.transform.localScale;
-            scale.x = Mathf.Abs(scale.x);
-
-
-        }
-        
-
+        controller.Move();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-
+    //    
     //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
@@ -54,5 +36,4 @@ public class PatrolMBehaviour : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
-
 }

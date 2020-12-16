@@ -17,6 +17,9 @@ public class WaypointPatrol : MonoBehaviour
     public EnemyControllerBB controller;
     public DogControllerBB controllerD;
 
+    public bool faceTarget = true;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,12 +57,12 @@ public class WaypointPatrol : MonoBehaviour
 
         var lScale = transform.localScale;
         // pos siguiente a la derecha, flip sprite
-        if (movVector.x > transform.position.x && lScale.x > 0)
+        if (movVector.x > transform.position.x && lScale.x > 0 && faceTarget)
         {
            
             lScale.x = -lScale.x;
         }
-        else if(movVector.x < transform.position.x && lScale.x < 0  )
+        else if(movVector.x < transform.position.x && lScale.x < 0  && faceTarget)
         {
             lScale.x = Mathf.Abs(lScale.x);
         }

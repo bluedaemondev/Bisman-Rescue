@@ -41,7 +41,7 @@ public class RandomStayInPlace : MonoBehaviour
             // quiero que deje de atacar si esta distraido?
             //this.GetComponent<FetchAndAttack>().enabled = false;
             //this.GetComponent<WaypointPatrol>().enabled = false;
-            Debug.Log("staying");
+            //Debug.Log("staying");
 
             if (controller)
                 controller.SetCurrentState(EnemyState.idle);

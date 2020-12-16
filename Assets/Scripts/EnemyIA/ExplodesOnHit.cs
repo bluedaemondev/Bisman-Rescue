@@ -45,7 +45,8 @@ public class ExplodesOnHit : MonoBehaviour
                 }
                 else if (item.collider.gameObject.layer == GameInfo.ENEMY_LAYER)
                 {
-                    item.collider.GetComponent<EnemyControllerBB>().SetCurrentState(EnemyState.dead);
+                    if(GetComponent<EnemyControllerBB>() != null)
+                        item.collider.GetComponent<EnemyControllerBB>().SetCurrentState(EnemyState.dead);
                 }
             }
 

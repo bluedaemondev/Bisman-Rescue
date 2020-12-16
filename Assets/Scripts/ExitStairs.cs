@@ -9,7 +9,7 @@ public class ExitStairs : MonoBehaviour
     public static List<EnemyControllerBB> enemiesOnFloor = new List<EnemyControllerBB>();
     public static List<DogControllerBB> dogsOnFloor = new List<DogControllerBB>();
 
-
+    public bool requireAllEnemies = true;
     public AudioClip clipRebote;
 
 
@@ -27,7 +27,7 @@ public class ExitStairs : MonoBehaviour
         if (collision.gameObject.layer != GameInfo.PLAYER_LAYER)
             return;
 
-        if (!enemiesOnFloor.Any() && !dogsOnFloor.Any())
+        if (!enemiesOnFloor.Any() && !dogsOnFloor.Any() && requireAllEnemies || !requireAllEnemies)
         {
             //condicion de subir de nivel = matar a todos los enemigos
             GameManagerActions.current.winEvent.Invoke();

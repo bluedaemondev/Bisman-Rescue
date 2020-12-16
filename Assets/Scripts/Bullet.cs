@@ -63,6 +63,10 @@ public class Bullet : MonoBehaviour
         {
             collision.gameObject.GetComponent<HealthScript>().GetDamage(damage);
         }
+        if (collision.gameObject.layer == GameInfo.PLAYER_LAYER)
+        {
+            collision.gameObject.GetComponent<HealthScript>().GetDamage(damage);
+        }
         Destroy(this.gameObject);
     }
 }

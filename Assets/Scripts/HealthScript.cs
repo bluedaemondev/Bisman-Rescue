@@ -30,6 +30,7 @@ public class HealthScript : MonoBehaviour
 
     public EnemyControllerBB tryEnemyA;
     public DogControllerBB tryEnemyB;
+    public BossControllerBB tryBoss;
 
     public AlteredState radioRemate;
 
@@ -38,6 +39,8 @@ public class HealthScript : MonoBehaviour
     {
         this.TryGetComponent<EnemyControllerBB>(out tryEnemyA);
         this.TryGetComponent<DogControllerBB>(out tryEnemyB);
+        this.TryGetComponent<BossControllerBB>(out tryBoss);
+
     }
 
     public void ResetLife()
@@ -88,8 +91,10 @@ public class HealthScript : MonoBehaviour
             {
                 if (tryEnemyA)
                     tryEnemyA.SetCurrentState(EnemyState.dead);
-                else if(tryEnemyB)
+                else if (tryEnemyB)
                     tryEnemyB.SetCurrentState(DogState.dead);
+                else if (tryBoss)
+                    GameManagerActions.current.winEvent.Invoke();
 
             }
         }
