@@ -154,6 +154,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: InodoroExplosivo
       objectReference: {fileID: 0}
+    - target: {fileID: 2360276062025843382, guid: 4c4f595ff11b21c49800c3bd2872ac6b,
+        type: 3}
+      propertyPath: m_TagString
+      value: explodes
+      objectReference: {fileID: 0}
     - target: {fileID: 5413409493421755808, guid: 4c4f595ff11b21c49800c3bd2872ac6b,
         type: 3}
       propertyPath: m_FlipX
@@ -385,7 +390,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -210907567
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 4966489693262371343, guid: 00250fa62885b2a479eb36cd60c45c4d,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2016,7 +2021,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0563c7e19d9e6284b83b94fa1d2f05c1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 66e6d1ae145bad64c968de3a65f7b47d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3215,6 +3220,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: InodoroExplosivo (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360276062025843382, guid: 4c4f595ff11b21c49800c3bd2872ac6b,
+        type: 3}
+      propertyPath: m_TagString
+      value: explodes
       objectReference: {fileID: 0}
     - target: {fileID: 5413409493421755808, guid: 4c4f595ff11b21c49800c3bd2872ac6b,
         type: 3}

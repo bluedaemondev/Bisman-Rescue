@@ -12,8 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: ceb38456cf98c6442b9076c346e7e859
   - enabled: 1
+    path: Assets/Scenes/previo1erPiso.unity
+    guid: 93dc21a45f1b0c945bd9d494a98d98d7
+  - enabled: 1
     path: Assets/Scenes/TutorialScene.unity
     guid: ff9082deb6ab5de4793e9806498ac989
+  - enabled: 1
+    path: Assets/Scenes/previo2doPiso.unity
+    guid: 9f1fad71858e1684d8656f4e4b730229
   - enabled: 1
     path: Assets/Scenes/floor2.unity
     guid: caec939ea3b104643a131259a00d58a4

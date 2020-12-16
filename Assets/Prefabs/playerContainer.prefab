@@ -5019,7 +5019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7327f01027dacb47846901ec79fa3b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeedMultip: 6.5
+  moveSpeedMultip: 8
   rbPlayer: {fileID: 0}
   sprRend: {fileID: 2659518540187331061}
   controller: {fileID: 2659518540451641462}

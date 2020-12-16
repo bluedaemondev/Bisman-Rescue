@@ -29,7 +29,15 @@ public class ExplodesOnHit : MonoBehaviour
                 Debug.Log("item in explosion "+item.collider.name);
                 if (item.collider.CompareTag(GameInfo.instance.explodableTag))
                 {
-                    Destroy(item.collider.gameObject);
+                    ExplodesOnHit tryGExploder;
+                    item.collider.TryGetComponent(out tryGExploder);
+
+                    if(tryGExploder == null)
+                        Destroy(item.collider.gameObject);
+                    else
+                    {
+                        tryGExploder.animObject.SetTrigger("exploded");
+                    }
                 }
                 else if(item.collider.gameObject.layer == GameInfo.PLAYER_LAYER)
                 {
