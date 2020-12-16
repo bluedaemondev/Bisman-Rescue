@@ -20,9 +20,13 @@ public class ShootTarget : MonoBehaviour
 
 
     public GameObject bulletPrefab;
+
+    public Transform player;
+
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindObjectOfType<PlayerControllerBB>().transform;
         this.sfxPlayer = this.GetComponentInChildren<AudioSource>();
         //this.gunScript = this.GetComponentInChildren<PersistentGunStats>();
         this.gunScript = this.GetComponent<PersistentGunStats>();
@@ -48,7 +52,7 @@ public class ShootTarget : MonoBehaviour
 
     private void Update()
     {
-        var playerPos = GameObject.FindObjectOfType<PlayerControllerBB>().transform.position;
+        var playerPos = player.position;
 
         if (this.currentCooldown <= 0 && canShoot)
 
