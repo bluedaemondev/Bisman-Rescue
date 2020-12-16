@@ -36,7 +36,7 @@ public class ExplodesOnHit : MonoBehaviour
                         Destroy(item.collider.gameObject);
                     else
                     {
-                        tryGExploder.animObject.SetTrigger("exploded");
+                        tryGExploder.animObject.SetTrigger("exploded"); // para encadenar explosiones
                     }
                 }
                 else if(item.collider.gameObject.layer == GameInfo.PLAYER_LAYER)

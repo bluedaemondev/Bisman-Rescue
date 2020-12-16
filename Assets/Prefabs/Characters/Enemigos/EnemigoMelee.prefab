@@ -313,7 +313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetsOnFinalWaypoint: 1
   waypoints: []
-  speedMov: 2.42
+  speedMov: 3.17
   speedMultip: 1
   currentWaypoint: {fileID: 0}
   currentWaypointIndex: 0

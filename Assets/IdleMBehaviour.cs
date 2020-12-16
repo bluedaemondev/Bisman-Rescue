@@ -12,7 +12,9 @@ public class IdleMBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         controller = animator.GetComponent<EnemyControllerBB>();
-        SoundManager.instance.PlayEffect(clip);
+
+        if (animator.GetComponentInChildren<SpriteRenderer>().isVisible)
+            SoundManager.instance.PlayEffect(clip);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
