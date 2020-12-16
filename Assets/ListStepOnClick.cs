@@ -27,13 +27,12 @@ public class ListStepOnClick : MonoBehaviour
 
             currIdx++;
 
-            if (currIdx > goList.Count)
+            if (currIdx >= goList.Count)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
             else
             {
-
                 goList[currIdx].SetActive(true);
 
             }
