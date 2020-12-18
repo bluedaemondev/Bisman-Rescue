@@ -59,6 +59,12 @@ public class Bullet : MonoBehaviour
         //}
         #endregion
 
+        if (rbSelf.velocity.magnitude > 0)
+        {
+            rbSelf.velocity = Vector2.zero;
+
+        }
+
         if (collision.gameObject.layer == GameInfo.ENEMY_LAYER)
         {
             collision.gameObject.GetComponent<HealthScript>().GetDamage(damage);
@@ -67,6 +73,8 @@ public class Bullet : MonoBehaviour
         {
             collision.gameObject.GetComponent<HealthScript>().GetDamage(damage);
         }
+
+        //if(diesInCollision)
         Destroy(this.gameObject);
     }
 }

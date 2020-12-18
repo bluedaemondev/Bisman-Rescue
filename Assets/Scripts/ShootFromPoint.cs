@@ -105,7 +105,7 @@ public class ShootFromPoint : MonoBehaviour
         }
 
         // throw gun
-        if (Input.GetMouseButton(1) && gunScript)
+        if (Input.GetMouseButtonDown(1) && gunScript.hasFireGun)
         {
             print("thrown weapon");
             ThrowWeapon(mousePos, Vector2.one);
@@ -194,23 +194,26 @@ public class ShootFromPoint : MonoBehaviour
     {
         //GameObject gunThrown = gunScript.gameObject;
 
-        if (this.gunScript.hasFireGun)
-        {
-            var throwGun = Instantiate(prefabThrowableGun, gunpoint.transform.position, Quaternion.identity);
-            var directionVector = (mousePos - gunpoint.transform.position).normalized;
-
-            throwGun.GetComponent<Bullet>().forceToAppend = directionVector * forceThrow * 100; //test
-            print(this.name + " thrown gun at " + (directionVector * forceThrow * 100).ToString());
+        //if (this.gunScript.hasFireGun)
+        //{
+        var throwGun = Instantiate(prefabThrowableGun, gunpoint.transform.position, Quaternion.identity);
+        var directionVector = (mousePos - gunpoint.transform.position).normalized;
 
 
-            //Destroy(gunThrown); // le rompo el arma, ya que la tiro
+        throwGun.GetComponent<SpriteRenderer>().sprite = GetComponent<PersistentGunStats>().gunSprite;
+        throwGun.GetComponent<Bullet>().forceToAppend = directionVector * forceThrow; //test
+        print(this.name + " thrown gun at " + (directionVector * forceThrow).ToString());
 
-            //seteo el melee
-            if (gunHolder.sprite)
-                gunHolder.sprite = null;
-            this.gunScript.SetToMelee();
+        throwGun.GetComponent<Bullet>().parentToIgnoreCol = this.GetComponent<Collider2D>();
+        //Destroy(gunThrown); // le rompo el arma, ya que la tiro
 
-        }
+        //seteo el melee
+        if (gunHolder.sprite)
+            gunHolder.sprite = null;
+
+        this.gunScript.SetToMelee();
+
+        //}
     }
 
     void MeleeAttack(Vector3 mousePos)

@@ -11,6 +11,9 @@ public class PersistentGunStats : MonoBehaviour
     public int ammoCurrent;
     public int ammoMax;
 
+    public SpriteRenderer firegunOnHand;
+
+
     public Sprite gunSprite;
     public AudioClip noClipSfx;
 
@@ -46,6 +49,8 @@ public class PersistentGunStats : MonoBehaviour
         this.cooldownMax = gun.cooldownMax;
         this.cooldownCurrent = cooldownMax;
         this.gunSprite = gun.gunSprite;
+
+        firegunOnHand.sprite = gunSprite;
 
         this.ammoCurrent = gun.ammoCurrent;
         this.ammoMax = gun.ammoMax;

@@ -34,6 +34,7 @@ public class PickupGunScript : MonoBehaviour
     {
         //gunPrefab = this.gameObject;
         spr = this.GetComponentInChildren<SpriteRenderer>().sprite;
+        gunRefference.gunSprite = spr;
 
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -49,6 +50,7 @@ public class PickupGunScript : MonoBehaviour
             //collision.GetComponent<ShootFromPoint>().SetGun(cpyTest);
 
             var gstat = collision.GetComponent<PersistentGunStats>();
+
 
             gstat.gunSprite = spr;
 

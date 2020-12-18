@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PursuitMBehaviour : StateMachineBehaviour
 {
-    EnemyControllerBB controller;
+    FollowingTarget controller;
+
     Transform transfPlayer;
 
     Vector2 lastpos;
@@ -15,7 +16,7 @@ public class PursuitMBehaviour : StateMachineBehaviour
         //transfPlayer = FindObjectOfType<PlayerControllerBB>().transform;
         transfPlayer = GameObject.FindGameObjectWithTag("Player").transform;
         lastpos = transfPlayer.position;
-        controller = animator.GetComponent<EnemyControllerBB>();
+        controller = animator.GetComponent<FollowingTarget>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -24,14 +25,14 @@ public class PursuitMBehaviour : StateMachineBehaviour
         if (transfPlayer != null)
         {
             lastpos = transfPlayer.position;
-            controller.pursuitComponent.SetFollowTarget(transfPlayer.position);
+            controller.SetFollowTarget(transfPlayer.position);
         }
         else
         {
-            controller.pursuitComponent.SetFollowTarget(lastpos);
+            controller.SetFollowTarget(lastpos);
         }
         
-        controller.pursuitComponent.Follow();
+        controller.Follow();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

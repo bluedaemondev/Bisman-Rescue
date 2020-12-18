@@ -31,6 +31,8 @@ public class HealthScript : MonoBehaviour
     public EnemyControllerBB tryEnemyA;
     public DogControllerBB tryEnemyB;
     public BossControllerBB tryBoss;
+    public ExplodesOnProximity bomber;
+    public LeaveDebuffTrail debuffer;
 
     public AlteredState radioRemate;
 
@@ -40,7 +42,8 @@ public class HealthScript : MonoBehaviour
         this.TryGetComponent<EnemyControllerBB>(out tryEnemyA);
         this.TryGetComponent<DogControllerBB>(out tryEnemyB);
         this.TryGetComponent<BossControllerBB>(out tryBoss);
-
+        this.TryGetComponent(out bomber);
+        this.TryGetComponent(out debuffer);
     }
 
     public void ResetLife()
@@ -93,6 +96,15 @@ public class HealthScript : MonoBehaviour
                     tryEnemyA.SetCurrentState(EnemyState.dead);
                 else if (tryEnemyB)
                     tryEnemyB.SetCurrentState(DogState.dead);
+                else if (bomber)
+                {
+                    bomber.anim.Play("bomberExploding");
+                }
+                else if (debuffer)
+                {
+                    debuffer.anim.Play("pukerDie");
+
+                }
                 else if (tryBoss)
                     GameManagerActions.current.winEvent.Invoke();
 
@@ -111,7 +123,7 @@ public class HealthScript : MonoBehaviour
     }
     public void DeathSound()
     {
-        SoundManager.instance.PlayEffect(damagedSound);
+        SoundManager.instance.PlayEffect(deathSound);
     }
 
     //void SetKnockedState()

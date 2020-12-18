@@ -20,6 +20,8 @@ public class ExplodesOnHit : MonoBehaviour
         if (collision.gameObject.layer == GameInfo.BULLET_LAYER ||
             collision.gameObject.layer == GameInfo.ENEMY_BULLET_LAYER)
         {
+            CamerasManager.instance.ShakeCameraNormal(8, 0.2f);
+
             print("exploded!");
 
             var touches = Physics2D.CircleCastAll(transform.position, radiusExplosion,Vector2.zero);
@@ -49,6 +51,7 @@ public class ExplodesOnHit : MonoBehaviour
                         item.collider.GetComponent<EnemyControllerBB>().SetCurrentState(EnemyState.dead);
                 }
             }
+
 
             animObject.SetTrigger("exploded");
             // parametro en el animador
