@@ -777,6 +777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b501178106455148accff14cf8fb26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireAllEnemies: 1
   clipRebote: {fileID: 8300000, guid: eebf14b04f7f76d4da15b32a96ddf71d, type: 3}
 --- !u!61 &73183565
 BoxCollider2D:
@@ -1703,6 +1704,9 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: be36835f37912bc4091d3421bce503e3, type: 3}
   tryEnemyA: {fileID: 0}
   tryEnemyB: {fileID: 0}
+  tryBoss: {fileID: 0}
+  bomber: {fileID: 0}
+  debuffer: {fileID: 0}
   radioRemate: {fileID: 780633617}
 --- !u!114 &219009366
 MonoBehaviour:
@@ -1768,6 +1772,7 @@ MonoBehaviour:
   currentWaypointIndex: 0
   controller: {fileID: 219009370}
   controllerD: {fileID: 0}
+  faceTarget: 1
 --- !u!114 &219009370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2166,6 +2171,8 @@ Transform:
   - {fileID: 219009363}
   - {fileID: 884448908}
   - {fileID: 1396043856}
+  - {fileID: 2121822025}
+  - {fileID: 1575380004}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3139,6 +3146,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 321982867}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &324117895
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 250689370}
+    m_Modifications:
+    - target: {fileID: 8490932201960582724, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemyPuker
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.9296875
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 65f70dd2d46aa4e46b75c88110094447, type: 3}
 --- !u!1 &346947560
 GameObject:
   m_ObjectHideFlags: 0
@@ -7593,6 +7669,9 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: be36835f37912bc4091d3421bce503e3, type: 3}
   tryEnemyA: {fileID: 0}
   tryEnemyB: {fileID: 0}
+  tryBoss: {fileID: 0}
+  bomber: {fileID: 0}
+  debuffer: {fileID: 0}
   radioRemate: {fileID: 250215030}
 --- !u!114 &884448911
 MonoBehaviour:
@@ -7660,6 +7739,7 @@ MonoBehaviour:
   currentWaypointIndex: 0
   controller: {fileID: 884448915}
   controllerD: {fileID: 0}
+  faceTarget: 1
 --- !u!114 &884448915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8003,6 +8083,9 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 142d44ace0d43334cb0d01aea69a2bff, type: 3}
   tryEnemyA: {fileID: 0}
   tryEnemyB: {fileID: 0}
+  tryBoss: {fileID: 0}
+  bomber: {fileID: 0}
+  debuffer: {fileID: 0}
   radioRemate: {fileID: 0}
 --- !u!114 &916090002
 MonoBehaviour:
@@ -8056,6 +8139,7 @@ MonoBehaviour:
   currentWaypointIndex: 0
   controller: {fileID: 0}
   controllerD: {fileID: 0}
+  faceTarget: 1
 --- !u!114 &916090005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8283,6 +8367,9 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: be36835f37912bc4091d3421bce503e3, type: 3}
   tryEnemyA: {fileID: 0}
   tryEnemyB: {fileID: 0}
+  tryBoss: {fileID: 0}
+  bomber: {fileID: 0}
+  debuffer: {fileID: 0}
   radioRemate: {fileID: 1144042418}
 --- !u!114 &934078441
 MonoBehaviour:
@@ -8347,6 +8434,7 @@ MonoBehaviour:
   currentWaypointIndex: 0
   controller: {fileID: 934078445}
   controllerD: {fileID: 0}
+  faceTarget: 1
 --- !u!114 &934078445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9134,6 +9222,75 @@ PolygonCollider2D:
       - {x: -44.4924, y: -30.801157}
       - {x: -2.1774101, y: -34.810097}
       - {x: 42.91062, y: -30.76039}
+--- !u!1001 &1052665478
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 250689370}
+    m_Modifications:
+    - target: {fileID: 8490932201960582724, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemyPuker (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.9296875
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 65f70dd2d46aa4e46b75c88110094447, type: 3}
 --- !u!1 &1053425311
 GameObject:
   m_ObjectHideFlags: 0
@@ -10330,6 +10487,9 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: be36835f37912bc4091d3421bce503e3, type: 3}
   tryEnemyA: {fileID: 0}
   tryEnemyB: {fileID: 0}
+  tryBoss: {fileID: 0}
+  bomber: {fileID: 0}
+  debuffer: {fileID: 0}
   radioRemate: {fileID: 0}
 --- !u!114 &1131680033
 MonoBehaviour:
@@ -10396,6 +10556,7 @@ MonoBehaviour:
   currentWaypointIndex: 0
   controller: {fileID: 1131680037}
   controllerD: {fileID: 0}
+  faceTarget: 1
 --- !u!114 &1131680037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11710,6 +11871,7 @@ MonoBehaviour:
   currentWaypointIndex: 0
   controller: {fileID: 1263335013}
   controllerD: {fileID: 0}
+  faceTarget: 1
 --- !u!114 &1263335019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11735,6 +11897,9 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: be36835f37912bc4091d3421bce503e3, type: 3}
   tryEnemyA: {fileID: 0}
   tryEnemyB: {fileID: 0}
+  tryBoss: {fileID: 0}
+  bomber: {fileID: 0}
+  debuffer: {fileID: 0}
   radioRemate: {fileID: 0}
 --- !u!95 &1263335020
 Animator:
@@ -12452,6 +12617,9 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: be36835f37912bc4091d3421bce503e3, type: 3}
   tryEnemyA: {fileID: 0}
   tryEnemyB: {fileID: 0}
+  tryBoss: {fileID: 0}
+  bomber: {fileID: 0}
+  debuffer: {fileID: 0}
   radioRemate: {fileID: 283414426}
 --- !u!114 &1326316224
 MonoBehaviour:
@@ -12516,6 +12684,7 @@ MonoBehaviour:
   currentWaypointIndex: 0
   controller: {fileID: 1326316228}
   controllerD: {fileID: 0}
+  faceTarget: 1
 --- !u!114 &1326316228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12968,6 +13137,9 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: be36835f37912bc4091d3421bce503e3, type: 3}
   tryEnemyA: {fileID: 0}
   tryEnemyB: {fileID: 0}
+  tryBoss: {fileID: 0}
+  bomber: {fileID: 0}
+  debuffer: {fileID: 0}
   radioRemate: {fileID: 1300082782}
 --- !u!114 &1396043859
 MonoBehaviour:
@@ -13034,6 +13206,7 @@ MonoBehaviour:
   currentWaypointIndex: 0
   controller: {fileID: 1396043863}
   controllerD: {fileID: 0}
+  faceTarget: 1
 --- !u!114 &1396043863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15121,6 +15294,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0756d87dd7ef4840a4ab2e47153618d, type: 3}
+--- !u!4 &1575380004 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+    type: 3}
+  m_PrefabInstance: {fileID: 1052665478}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1578805568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16466,6 +16645,9 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: be36835f37912bc4091d3421bce503e3, type: 3}
   tryEnemyA: {fileID: 0}
   tryEnemyB: {fileID: 0}
+  tryBoss: {fileID: 0}
+  bomber: {fileID: 0}
+  debuffer: {fileID: 0}
   radioRemate: {fileID: 2102861569}
 --- !u!114 &1692431159
 MonoBehaviour:
@@ -16530,6 +16712,7 @@ MonoBehaviour:
   currentWaypointIndex: 0
   controller: {fileID: 1692431163}
   controllerD: {fileID: 0}
+  faceTarget: 1
 --- !u!114 &1692431163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17263,6 +17446,7 @@ MonoBehaviour:
   currentWaypointIndex: 0
   controller: {fileID: 1761803927}
   controllerD: {fileID: 0}
+  faceTarget: 1
 --- !u!114 &1761803933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17288,6 +17472,9 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: be36835f37912bc4091d3421bce503e3, type: 3}
   tryEnemyA: {fileID: 0}
   tryEnemyB: {fileID: 0}
+  tryBoss: {fileID: 0}
+  bomber: {fileID: 0}
+  debuffer: {fileID: 0}
   radioRemate: {fileID: 0}
 --- !u!95 &1761803934
 Animator:
@@ -17684,6 +17871,9 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: be36835f37912bc4091d3421bce503e3, type: 3}
   tryEnemyA: {fileID: 0}
   tryEnemyB: {fileID: 0}
+  tryBoss: {fileID: 0}
+  bomber: {fileID: 0}
+  debuffer: {fileID: 0}
   radioRemate: {fileID: 488552449}
 --- !u!114 &1797616348
 MonoBehaviour:
@@ -17748,6 +17938,7 @@ MonoBehaviour:
   currentWaypointIndex: 0
   controller: {fileID: 1797616352}
   controllerD: {fileID: 0}
+  faceTarget: 1
 --- !u!114 &1797616352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20590,6 +20781,12 @@ Transform:
   m_Father: {fileID: 716568582}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2121822025 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8490932201960582727, guid: 65f70dd2d46aa4e46b75c88110094447,
+    type: 3}
+  m_PrefabInstance: {fileID: 324117895}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2124281107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21068,6 +21265,7 @@ MonoBehaviour:
   currentWaypointIndex: 0
   controller: {fileID: 1953677211}
   controllerD: {fileID: 0}
+  faceTarget: 1
 --- !u!4 &363814629118817240
 Transform:
   m_ObjectHideFlags: 0
@@ -21188,6 +21386,9 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: be36835f37912bc4091d3421bce503e3, type: 3}
   tryEnemyA: {fileID: 0}
   tryEnemyB: {fileID: 0}
+  tryBoss: {fileID: 0}
+  bomber: {fileID: 0}
+  debuffer: {fileID: 0}
   radioRemate: {fileID: 0}
 --- !u!114 &363814629118817247
 MonoBehaviour:

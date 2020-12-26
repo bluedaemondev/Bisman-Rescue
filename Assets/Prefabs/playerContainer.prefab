@@ -5049,6 +5049,9 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: e76b61ff7cb16824da02ec20ff2947e6, type: 3}
   tryEnemyA: {fileID: 0}
   tryEnemyB: {fileID: 0}
+  tryBoss: {fileID: 0}
+  bomber: {fileID: 0}
+  debuffer: {fileID: 0}
   radioRemate: {fileID: 0}
 --- !u!114 &2659518540451641741
 MonoBehaviour:
@@ -5082,6 +5085,7 @@ MonoBehaviour:
   cooldownCurrent: 0
   ammoCurrent: 0
   ammoMax: 0
+  firegunOnHand: {fileID: 2659518541929446059}
   gunSprite: {fileID: 0}
   noClipSfx: {fileID: 0}
   controller: {fileID: 2659518540451641462}
@@ -5283,7 +5287,7 @@ Transform:
   m_GameObject: {fileID: 2659518541929446057}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.28, y: 0, z: 0}
-  m_LocalScale: {x: 0.72635, y: 0.72635, z: 0.72635}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.72635}
   m_Children: []
   m_Father: {fileID: 2659518540357351044}
   m_RootOrder: 0

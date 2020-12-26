@@ -232,6 +232,8 @@ MonoBehaviour:
   tryEnemyA: {fileID: 0}
   tryEnemyB: {fileID: 0}
   tryBoss: {fileID: 0}
+  bomber: {fileID: 0}
+  debuffer: {fileID: 0}
   radioRemate: {fileID: 0}
 --- !u!114 &4066039121934044460
 MonoBehaviour:
@@ -274,6 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a219d27df19bdaa4eb2803429da25f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   distanceToTrigger: 4.26
 --- !u!1 &4423096082467313666
 GameObject:
@@ -298,7 +301,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4423096082467313666}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.94, y: 17.02, z: -7.4229445}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

@@ -9,8 +9,14 @@ public class LeaveDebuffTrail : MonoBehaviour
     public TrailRenderer trail; // trail del vomito
     public GameObject TrailFollower;
     public GameObject ColliderPrefab;
+    public AudioClip attackSound;
+    public AudioClip deathSound;
+
 
     public float accuTTrails = 0f;
+
+    public GameObject prefabAtaque2;
+
 
     public Animator anim;
 
@@ -61,5 +67,17 @@ public class LeaveDebuffTrail : MonoBehaviour
             }
         }
         accuTTrails = 0;
+    }
+
+    public void LeavePrefab(float chance)
+    {
+
+        if (Random.Range(0, 100) < chance)
+        {
+            Instantiate(prefabAtaque2, transform.position, Quaternion.identity);
+            if (trail.isVisible)
+                SoundManager.instance.PlayEffect(attackSound);
+
+        }
     }
 }
